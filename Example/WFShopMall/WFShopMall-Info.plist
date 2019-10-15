@@ -26,8 +26,21 @@
 	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+    </dict>
+    <key>MOBAppKey</key>
+    <string>2c8cfd5d10c24</string>
+    <key>MOBAppSecret</key>
+    <string>9336b9e2629a24d070339ae4d200e43e</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>需要您的同意才能访问相册,用于保存图片到系统相册</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>需要您的同意才能访问相册,用于保存图片到系统相册</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
