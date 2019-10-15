@@ -39,12 +39,16 @@
     
     //分享地址
     NSString *shareUrl = [NSString stringWithFormat:@"%@&ticketId=%@",self.model.shareUrl,self.model.shareTicketId];
+    //多少元导购券
+    NSString *cPrice = [NSString stringWithFormat:@"¥%@元优惠券, 限量抢购",@(self.model.ticketAmount.integerValue/100.0f)];
+    //描述
+    NSString *description = [self.model.ticketId isEqualToString:@"0"] ? @"我在云智充发现一样好东西, 快来看看吧~" : cPrice;
     if (sender.tag == 10) {
         //微信好友
-        [YFMediatorManager shareWechatWithWebpageUrl:shareUrl title:@"导购券分享" description:self.model.title thumbImageName:@"shareIcon" scnce:0];
+        [YFMediatorManager shareWechatWithWebpageUrl:shareUrl title:self.model.title description:description thumbImage:self.imgView.image scnce:0];
     }else if (sender.tag == 20) {
         //微信朋友圈
-        [YFMediatorManager shareWechatWithWebpageUrl:shareUrl title:@"导购券分享" description:self.model.title thumbImageName:@"shareIcon" scnce:1];
+        [YFMediatorManager shareWechatWithWebpageUrl:shareUrl title:self.model.title description:description thumbImage:self.imgView.image scnce:1];
     }else if (sender.tag == 30) {
         //复制链接
         [WFShopMallShareTool copyByContentText:shareUrl resultBlock:^{

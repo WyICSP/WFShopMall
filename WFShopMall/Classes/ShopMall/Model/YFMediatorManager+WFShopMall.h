@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)shareWechatWithWebpageUrl:(NSString *)webpageUrl
                             title:(NSString *)title
                       description:(NSString *)description
-                   thumbImageName:(NSString *)thumbImageName
+                   thumbImage:(UIImage *)thumbImage
                             scnce:(NSInteger)scnce;
 
 //+ ()

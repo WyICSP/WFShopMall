@@ -13,9 +13,9 @@
 + (void)shareWechatWithWebpageUrl:(NSString *)webpageUrl
                             title:(NSString *)title
                       description:(NSString *)description
-                   thumbImageName:(NSString *)thumbImageName
+                       thumbImage:(NSString *)thumbImage
                             scnce:(NSInteger)scnce {
-    NSArray *pamrs = @[webpageUrl,title,description,thumbImageName,@(scnce)];
+    NSArray *pamrs = @[webpageUrl,title,description,thumbImage,@(scnce)];
     [self performTarget:@"WFPayPublicAPI" action:@"shareWechatWithWebpageUrl:" params:pamrs isRequiredReturnValue:NO];
 }
 
