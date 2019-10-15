@@ -1,6 +1,6 @@
 {
   "name": "WFShopMall",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "summary": "WFShopMall导购券",
   "description": "WFShopMall合作版导购券组件",
   "homepage": "https://github.com/WyICSP/WFShopMall",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/WyICSP/WFShopMall.git",
-    "tag": "0.1.0"
+    "tag": "0.1.1"
   },
   "platforms": {
     "ios": "9.0"

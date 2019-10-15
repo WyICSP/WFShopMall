@@ -25,6 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
                    thumbImageName:(NSString *)thumbImageName
                             scnce:(NSInteger)scnce;
 
+//+ ()
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -12,7 +12,7 @@
 #import "YFMediatorManager+WFShopMall.h"
 #import "WFProductListModel.h"
 #import "UIImage+LXQRCode.h"
-#import "WFShareHelpTool.h"
+#import "WFShopMallShareTool.h"
 #import "AttributedLbl.h"
 #import "UIView+Frame.h"
 #import "YFKeyWindow.h"
@@ -47,13 +47,13 @@
         [YFMediatorManager shareWechatWithWebpageUrl:shareUrl title:@"导购券分享" description:self.model.title thumbImageName:@"shareIcon" scnce:1];
     }else if (sender.tag == 30) {
         //复制链接
-        [WFShareHelpTool copyByContentText:shareUrl resultBlock:^{
+        [WFShopMallShareTool copyByContentText:shareUrl resultBlock:^{
             [YFToast showMessage:@"复制成功" inView:[[YFKeyWindow shareInstance] getCurrentVC].view];
         }];
     }else if (sender.tag == 40) {
         //保存图片
-        UIImage *image = [WFShareHelpTool screenshotForView:self.goodsView];
-        [WFShareHelpTool saveImageToAlbumWithUrls:@[image]];
+        UIImage *image = [WFShopMallShareTool screenshotForView:self.goodsView];
+        [WFShopMallShareTool saveImageToAlbumWithUrls:@[image]];
     }else if (sender.tag == 50) {
         //取消
     }else if (sender.tag == 60) {
@@ -88,9 +88,7 @@
     NSString *shareUrl = [NSString stringWithFormat:@"%@&ticketId=%@",self.model.shareUrl,self.model.shareTicketId];
     UIImage *image = [UIImage LX_ImageOfQRFromURL:shareUrl codeSize:75.0f];
     self.qrCode.image = image;
-    
-    DLog(@"%@",model.shareTicketId);
-    
+        
 }
 
 @end

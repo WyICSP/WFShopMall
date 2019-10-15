@@ -26,7 +26,7 @@ PODS:
     - WYAutoLayout
   - WFKitMain (0.1.9):
     - WFBasics
-  - WFShopMall (0.1.0):
+  - WFShopMall (0.1.1):
     - MJExtension
     - MJRefresh
     - SDWebImage
@@ -61,7 +61,7 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   WFBasics: 71588527890b20aef773ab577e73676afbfe2695
   WFKitMain: 94940a881a5e28c2f2855d196545180e24745321
-  WFShopMall: b5ebc3aa494b8d6c2179f08b107b2f77c4c356c9
+  WFShopMall: f8ac8d805b4ce048ea1269c17c3dbf2415b74f1b
   WYAutoLayout: 3cb136ddc2efa9faaecf15876e6a9b2a6fd7c6cb
 
 PODFILE CHECKSUM: edeb229b4aba07d8135d92ef2358a23aa4199bdb

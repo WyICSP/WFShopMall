@@ -19,7 +19,7 @@
 #import "UIImage+LXQRCode.h"
 #import "WFHistoryAddressModel.h"
 #import "WFProductListModel.h"
-#import "WFShareHelpTool.h"
+#import "WFShopMallShareTool.h"
 #import "YFMediatorManager+WFShopMall.h"
 #import "WFCollectionViewFlowLayout.h"
 #import "WFIssuingCircleTableViewCell.h"
