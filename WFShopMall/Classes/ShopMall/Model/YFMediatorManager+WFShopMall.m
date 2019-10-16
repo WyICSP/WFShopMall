@@ -16,7 +16,7 @@
                        thumbImage:(UIImage *)thumbImage
                             scnce:(NSInteger)scnce {
     NSArray *pamrs = @[webpageUrl,title,description,thumbImage,@(scnce)];
-    [self performTarget:@"WFPayPublicAPI" action:@"shareWechatWithWebpageUrl:" params:pamrs isRequiredReturnValue:NO];
+    [self performTarget:@"WFPayPublicAPI" action:@"shareWechatWithWebpageUrlWithParams:" params:pamrs isRequiredReturnValue:NO];
 }
 
 

@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @class WFProductListModel;
 
 @interface WFProductMsgShareView : UIView
+/// contents
+@property (weak, nonatomic) IBOutlet UIView *contentsView;
 /// 商品信息 view
 @property (weak, nonatomic) IBOutlet UIView *goodsView;
 ///  商品图片

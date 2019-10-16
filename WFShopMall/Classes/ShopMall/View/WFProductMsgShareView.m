@@ -29,7 +29,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.goodsView.layer.cornerRadius = 10.0f;
-    self.imgView.layer.cornerRadius = 10.0f;
+//    self.imgView.layer.cornerRadius = 10.0f;
     SKViewsBorder(self.coupon, 3, 0.5, NavColor);
 }
 - (IBAction)clickBtn:(UIButton *)sender {
@@ -38,7 +38,7 @@
         !self.clickApperBlock ? : self.clickApperBlock();
     
     //分享地址
-    NSString *shareUrl = [NSString stringWithFormat:@"%@&ticketId=%@",self.model.shareUrl,self.model.shareTicketId];
+    NSString *shareUrl = [NSString stringWithFormat:@"%@&shareBatchCode=%@",self.model.shareUrl,self.model.shareTicketId];
     //多少元导购券
     NSString *cPrice = [NSString stringWithFormat:@"¥%@元优惠券, 限量抢购",@(self.model.ticketAmount.integerValue/100.0f)];
     //描述
@@ -56,7 +56,8 @@
         }];
     }else if (sender.tag == 40) {
         //保存图片
-        UIImage *image = [WFShopMallShareTool screenshotForView:self.goodsView];
+        UIImage *image = [WFShopMallShareTool screenshotForView:self.contentsView];
+        self.contentsView.backgroundColor = UIColor.clearColor;
         [WFShopMallShareTool saveImageToAlbumWithUrls:@[image]];
     }else if (sender.tag == 50) {
         //取消
@@ -89,7 +90,7 @@
     NSString *price = [NSString stringWithFormat:@"¥ %@",@(model.couponAfterPrice.integerValue/100.0f)];
     [AttributedLbl setRichTextOnlyFont:self.price titleString:price textFont:[UIFont boldSystemFontOfSize:12] fontRang:NSMakeRange(0, 1)];
     //二维码
-    NSString *shareUrl = [NSString stringWithFormat:@"%@&ticketId=%@",self.model.shareUrl,self.model.shareTicketId];
+    NSString *shareUrl = [NSString stringWithFormat:@"%@&shareBatchCode=%@",self.model.shareUrl,self.model.shareTicketId];
     UIImage *image = [UIImage LX_ImageOfQRFromURL:shareUrl codeSize:75.0f];
     self.qrCode.image = image;
         

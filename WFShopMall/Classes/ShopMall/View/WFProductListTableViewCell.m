@@ -57,6 +57,8 @@ static NSString *const cellId = @"WFProductListTableViewCell";
     self.origPrice.text = [NSString stringWithFormat:@"¥%@",@(model.oriPrice.integerValue/100.0f)];
     //导购券
     self.guideCoupon.text = [NSString stringWithFormat:@"  导购券%@元  ",@(model.ticketAmount.integerValue/100.0f)];
+    self.guideCoupon.hidden = model.ticketAmount.intValue == 0 ? YES : NO;
+    
     //分享赚
     NSString *sharePrice = [NSString stringWithFormat:@"  赚%@红包",@(model.shareTicketAmount.integerValue/100.0f)];
     [self.shareBtn setTitle:sharePrice forState:0];
