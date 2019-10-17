@@ -71,6 +71,9 @@
     self.currentPage = 1;
     self.ptype = @"ticket_after_price_des";
     [SVProgressHUD showWithStatus:@"加载中..."];
+    //添加 navbar
+    [self.view addSubview:self.navBar];
+    //获取数据
     [self getProductListData];
     
 }
@@ -173,7 +176,7 @@
         [self.navigationController pushViewController:search animated:NO];
     }else {
         WFStrategyViewController *strategy = [[WFStrategyViewController alloc] init];
-        strategy.urlString = [NSString stringWithFormat:@"%@page/strategy.html",H5_HOST];
+        strategy.urlString = [NSString stringWithFormat:@"%@yzc_business_h5/page/strategy.html",H5_HOST];
         strategy.progressColor = NavColor;
         strategy.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:strategy animated:YES];
@@ -250,7 +253,6 @@
             @strongify(self)
             [self jumpSearchOrStrategyCtrlWithTag:tag];
         };
-        [self.view addSubview:_navBar];
     }
     return _navBar;
 }

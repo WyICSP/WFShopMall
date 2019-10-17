@@ -20,13 +20,13 @@ PODS:
     - SDWebImage/Core (= 5.1.0)
   - SDWebImage/Core (5.1.0)
   - SVProgressHUD (2.2.5)
-  - WFBasics (0.2.6):
+  - WFBasics (0.2.7):
     - AFNetworking
     - SVProgressHUD
     - WYAutoLayout
-  - WFKitMain (0.1.9):
+  - WFKitMain (0.2.0):
     - WFBasics
-  - WFShopMall (0.1.4):
+  - WFShopMall (0.1.5):
     - MJExtension
     - MJRefresh
     - SDWebImage
@@ -59,9 +59,9 @@ SPEC CHECKSUMS:
   MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
   SDWebImage: fb387001955223213dde14bc08c8b73f371f8d8f
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  WFBasics: 71588527890b20aef773ab577e73676afbfe2695
-  WFKitMain: 94940a881a5e28c2f2855d196545180e24745321
-  WFShopMall: 964e658dcfa850b859d5076e9e3a9a3a0bdbd8f4
+  WFBasics: 244408308f1659ce7f9ca3cb99ba0b803feb45e3
+  WFKitMain: 4ee7dbcc5f89ae82e95b241cea1ea1aed07004e3
+  WFShopMall: 74ebdd651b52da9cd66bc360fc6447e83663d62e
   WYAutoLayout: 3cb136ddc2efa9faaecf15876e6a9b2a6fd7c6cb
 
 PODFILE CHECKSUM: edeb229b4aba07d8135d92ef2358a23aa4199bdb
