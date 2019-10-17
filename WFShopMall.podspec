@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'WFShopMall'
-  s.version          = '0.1.5'
+  s.version          = '0.1.6'
   s.summary          = 'WFShopMall导购券'
 
 # This description is used to generate tags and improve search results.
@@ -41,6 +41,7 @@ WFShopMall合作版导购券组件
   # s.dependency 'AFNetworking', '~> 2.3'
   s.dependency 'WFBasics'
   s.dependency 'WFKitMain'
+  s.dependency 'WFKitLogin'
   s.dependency 'MJRefresh'
   s.dependency 'SDWebImage'
   s.dependency 'MJExtension'
