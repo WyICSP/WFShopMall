@@ -30,7 +30,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.goodsView.layer.cornerRadius = 10.0f;
-//    self.imgView.layer.cornerRadius = 10.0f;
+    self.imgView.layer.cornerRadius = 10.0f;
     SKViewsBorder(self.coupon, 3, 0.5, NavColor);
 }
 - (IBAction)clickBtn:(UIButton *)sender {

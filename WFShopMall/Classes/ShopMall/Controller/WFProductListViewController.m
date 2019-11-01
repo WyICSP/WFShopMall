@@ -120,6 +120,7 @@
      @weakify(self)
      [WFShopDataTool getShareNumWithParams:params resultBlock:^(NSString * _Nonnull ticketId) {
          @strongify(self)
+         model.shareTicketId = ticketId;
          self.popShareView.model = model;
          self.popShareView.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.7];
      }];
