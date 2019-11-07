@@ -22,8 +22,8 @@
 + (void)getShopMallProductsListWithParams:(NSDictionary *)params
                               resultBlock:(void(^)(NSArray <WFProductListModel *> *models))resultBlock
                                 failBlock:(void(^)(void))failBlock {
-    //接口地址
-    NSString *path = [NSString stringWithFormat:@"%@yzc-b2bb2c-api/api/product/findByParam",NEW_HOST_URL];
+    //接口地址 20191107 修改接口域名
+    NSString *path = [NSString stringWithFormat:@"%@yzc-guide-ticket/api/product/findByParam",NEW_HOST_URL];
     [WKRequest getWithURLString:path parameters:params isShowHud:NO success:^(WKBaseModel *baseModel) {
         if (CODE_ZERO) {
             NSArray *productDatas = [[baseModel.mDictionary safeJsonObjForKey:@"data"] safeJsonObjForKey:@"datas"];
@@ -39,8 +39,8 @@
 
 + (void)getShareNumWithParams:(NSDictionary *)params
                   resultBlock:(void(^)(NSString *ticketId))resultBlock {
-    //接口地址
-    NSString *path = [NSString stringWithFormat:@"%@yzc-b2bb2c-api/api/ticketShare/getShareNum",NEW_HOST_URL];
+    //接口地址 20191107 修改接口域名
+    NSString *path = [NSString stringWithFormat:@"%@yzc-guide-ticket/api/ticketShare/getShareNum",NEW_HOST_URL];
     [WKRequest postWithURLString:path parameters:params isJson:YES isShowHud:YES success:^(WKBaseModel *baseModel) {
         if (CODE_ZERO) {
             resultBlock(baseModel.data);
