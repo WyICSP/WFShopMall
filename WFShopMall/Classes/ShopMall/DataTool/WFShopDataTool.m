@@ -26,7 +26,8 @@
     NSString *path = [NSString stringWithFormat:@"%@yzc-guide-ticket/api/product/findByParam",NEW_HOST_URL];
     [WKRequest getWithURLString:path parameters:params isShowHud:NO success:^(WKBaseModel *baseModel) {
         if (CODE_ZERO) {
-            NSArray *productDatas = [[baseModel.mDictionary safeJsonObjForKey:@"data"] safeJsonObjForKey:@"datas"];
+            // 20191107 datas  修改为 list
+            NSArray *productDatas = [[baseModel.mDictionary safeJsonObjForKey:@"data"] safeJsonObjForKey:@"list"];
             resultBlock([WFProductListModel mj_objectArrayWithKeyValuesArray:productDatas]);
         }else {
             failBlock();
