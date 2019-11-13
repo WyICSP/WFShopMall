@@ -117,6 +117,9 @@
  - (void)getShareNumWithModel:(WFProductListModel *)model {
      NSMutableDictionary *params = [NSMutableDictionary dictionary];
      [params safeSetObject:model.ticketId forKey:@"ticketId"];
+     // 20191107 新增入参 productId
+     [params safeSetObject:model.productId forKey:@"productId"];
+     
      @weakify(self)
      [WFShopDataTool getShareNumWithParams:params resultBlock:^(NSString * _Nonnull ticketId) {
          @strongify(self)
