@@ -11,6 +11,7 @@
 #import "WFProductListTableViewCell.h"
 #import "WFStrategyViewController.h"
 #import "UITableView+YFExtension.h"
+#import "WFIncomeViewController.h"
 #import "WFProductMsgShareView.h"
 #import "SVProgressHUD+YFHud.h"
 #import "WFShopMallHeadView.h"
@@ -24,7 +25,8 @@
 #import "MJRefresh.h"
 #import "WKSetting.h"
 #import "WKHelp.h"
-
+#import "WFWithdrawViewController.h"
+#import "WFShopMallIncomeViewController.h"
 
 @interface WFShopMallViewController ()<UITableViewDelegate,UITableViewDataSource>
 /**tableView*/
@@ -167,19 +169,26 @@
 /**
  跳转搜索页面和攻略
 
- @param tag 10 搜索   20 攻略
+ @param tag 10 搜索   20 攻略  30 收益
  */
 - (void)jumpSearchOrStrategyCtrlWithTag:(NSInteger)tag {
     if (tag == 10) {
         WFShopMallSearchViewController *search = [[WFShopMallSearchViewController alloc] init];
         search.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:search animated:NO];
-    }else {
+    }else if(tag ==20)  {
         WFStrategyViewController *strategy = [[WFStrategyViewController alloc] init];
         strategy.urlString = [NSString stringWithFormat:@"%@yzc_business_h5/page/strategy.html",H5_HOST];
         strategy.progressColor = NavColor;
         strategy.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:strategy animated:YES];
+    }else{
+    
+        // 收益
+        WFShopMallIncomeViewController *incomeVC = [[WFShopMallIncomeViewController alloc] init];
+        incomeVC.hidesBottomBarWhenPushed = YES;
+        incomeVC.urlString = @"http://dev.jx9n.cn/yzc-ebus-front-ua/#/partnerProfit";
+        [self.navigationController pushViewController:incomeVC animated:NO];
     }
 }
 

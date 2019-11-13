@@ -7,7 +7,7 @@
 //
 
 #import "WFStrategyViewController.h"
-
+#import "WKHelp.h"
 @interface WFStrategyViewController ()
 
 @end
@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.dwebview.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight);
     self.title = @"邀请攻略";
 }
 

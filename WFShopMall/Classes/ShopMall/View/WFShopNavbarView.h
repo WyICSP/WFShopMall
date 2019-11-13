@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface WFShopNavbarView : UIView
 /**搜索按钮*/
 @property (weak, nonatomic) IBOutlet UIButton *searchBtn;
-/**点击事件*/
+/**点击事件 tag 10 搜索 20 攻略  30 收益*/
 @property (copy, nonatomic) void (^clickBtnBlock)(NSInteger tag);
 @end
 

@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @class WFProductListModel;
-
+@class WFWithdrawModel;
 @interface WFShopDataTool : NSObject
 
 #pragma mark 获取导购券商品列表数据
@@ -27,6 +27,62 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param resultBlock 返回结果
 + (void)getShareNumWithParams:(NSDictionary *)params
                   resultBlock:(void(^)(NSString *ticketId))resultBlock;
+
+
+
+#pragma mark- 提现
+
+/**
+获取绑定信息和 可提现余额
+@param params 参数
+@param resultBlock 返回结果
+*/
++ (void)getWithdrawDataWithParams:(NSDictionary *)params
+                      resultBlock:(void(^)( WFWithdrawModel *model))resultBlock
+                        failBlock:(void(^)(void))failBlock;
+
+
+
+
+
+
+
+/**
+ 绑定支付宝发送验证码
+
+ @param params 参数
+ @param resultBlock 返回结果
+ */
++ (void)bindAlipaySendCodeWithParams:(NSDictionary *)params
+                         resultBlock:(void(^)(void))resultBlock;
+
+
+
+
+/**
+ 绑定支付宝
+
+ @param params 参数
+ @param resultBlock 返回结果
+ */
++ (void)bindAlipayWithParams:(NSDictionary *)params
+                 resultBlock:(void(^)(void))resultBlock;
+
+
+
+
+
+
+/**提现
+ @param params 参数
+ @param resultBlock 返回结果
+ */
+
++ (void)WithdrawWithParams:(NSDictionary *)params
+                      resultBlock:(void(^)( NSDictionary *detailDic))resultBlock
+                        failBlock:(void(^)(void))failBlock;
+
+
 
 
 @end

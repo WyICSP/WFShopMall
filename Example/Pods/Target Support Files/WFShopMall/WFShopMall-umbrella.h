@@ -10,16 +10,22 @@
 #endif
 #endif
 
+#import "IncomeJsApiTest.h"
+#import "WFBindWithdrawViewController.h"
+#import "WFIncomeViewController.h"
 #import "WFProductListViewController.h"
+#import "WFShopMallIncomeViewController.h"
 #import "WFShopMallSearchViewController.h"
 #import "WFShopMallViewController.h"
 #import "WFStrategyViewController.h"
+#import "WFWithdrawViewController.h"
 #import "WFShopDataTool.h"
 #import "UIImage+colorImage.h"
 #import "UIImage+LXQRCode.h"
 #import "WFHistoryAddressModel.h"
 #import "WFProductListModel.h"
 #import "WFShopMallShareTool.h"
+#import "WFWithdrawModel.h"
 #import "YFMediatorManager+WFShopMall.h"
 #import "WFCollectionViewFlowLayout.h"
 #import "WFIssuingCircleTableViewCell.h"
