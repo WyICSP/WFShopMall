@@ -57,7 +57,7 @@
     self.automaticallyRefresh = YES;
     
     // 默认是当offset达到条件就发送请求（可连续）
-    self.onlyRefreshPerDrag = YES;
+    self.onlyRefreshPerDrag = NO;
 }
 
 - (void)scrollViewContentSizeDidChange:(NSDictionary *)change
@@ -65,7 +65,7 @@
     [super scrollViewContentSizeDidChange:change];
     
     // 设置位置
-    self.mj_y = self.scrollView.mj_contentH + self.ignoredScrollViewContentInsetBottom;
+    self.mj_y = self.scrollView.mj_contentH;
 }
 
 - (void)scrollViewContentOffsetDidChange:(NSDictionary *)change
@@ -95,46 +95,28 @@
     if (self.state != MJRefreshStateIdle) return;
     
     UIGestureRecognizerState panState = _scrollView.panGestureRecognizer.state;
-    
-    switch (panState) {
-        // 手松开
-        case UIGestureRecognizerStateEnded: {
-            if (_scrollView.mj_insetT + _scrollView.mj_contentH <= _scrollView.mj_h) {  // 不够一个屏幕
-                if (_scrollView.mj_offsetY >= - _scrollView.mj_insetT) { // 向上拽
-                    [self beginRefreshing];
-                }
-            } else { // 超出一个屏幕
-                if (_scrollView.mj_offsetY >= _scrollView.mj_contentH + _scrollView.mj_insetB - _scrollView.mj_h) {
-                    [self beginRefreshing];
-                }
+    if (panState == UIGestureRecognizerStateEnded) {// 手松开
+        if (_scrollView.mj_insetT + _scrollView.mj_contentH <= _scrollView.mj_h) {  // 不够一个屏幕
+            if (_scrollView.mj_offsetY >= - _scrollView.mj_insetT) { // 向上拽
+                [self beginRefreshing];
             }
-        }// ‼️注意: 这里没有 break; fallthrough 执行重置 oneNewPan 语句 (Ended & Canceled & Failed)
-            
-        case UIGestureRecognizerStateCancelled:
-        case UIGestureRecognizerStateFailed: {
-            self.oneNewPan = NO;
+        } else { // 超出一个屏幕
+            if (_scrollView.mj_offsetY >= _scrollView.mj_contentH + _scrollView.mj_insetB - _scrollView.mj_h) {
+                [self beginRefreshing];
+            }
         }
-            break;
-            
-        case UIGestureRecognizerStateBegan: {
-            self.oneNewPan = YES;
-        }
-            break;
-            
-        default:
-            break;
+    } else if (panState == UIGestureRecognizerStateBegan) {
+        self.oneNewPan = YES;
     }
-}
-
-- (BOOL)ignoreRefreshAction {
-    return !self.isOneNewPan && self.isOnlyRefreshPerDrag;
 }
 
 - (void)beginRefreshing
 {
-    if ([self ignoreRefreshAction]) return;
+    if (!self.isOneNewPan && self.isOnlyRefreshPerDrag) return;
     
     [super beginRefreshing];
+    
+    self.oneNewPan = NO;
 }
 
 - (void)setState:(MJRefreshState)state
