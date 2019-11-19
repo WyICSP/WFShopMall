@@ -16,7 +16,7 @@
 /**跳转到提现页面*/
 - (void)gotoWithdrawController:(NSString *)msg :(JSCallback) completionHandler{
     
-    WFWithdrawViewController *withDrawVC = [[WFWithdrawViewController alloc]init];
+    WFWithdrawViewController *withDrawVC = [[WFWithdrawViewController alloc] initWithNibName:@"WFWithdrawViewController" bundle:[NSBundle bundleForClass:[self class]]];
     
     [[[YFKeyWindow shareInstance] getCurrentVC].navigationController pushViewController:withDrawVC animated:YES];
     completionHandler(msg,YES);

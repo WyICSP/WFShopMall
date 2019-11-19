@@ -56,6 +56,7 @@
     self.vCodeTextField.delegate = self;
     self.accountTextField.delegate = self;
     
+    self.hintLabel.text = [NSString stringWithFormat:@"小提示：验证码将发送至您绑定的手机上(%@)",[self.userPhone stringByReplacingOccurrencesOfString:[self.userPhone substringWithRange:NSMakeRange(3,4)]withString:@"****"]];
 }
 
 
@@ -72,7 +73,6 @@
     @weakify(self)
     [WFShopDataTool bindAlipaySendCodeWithParams:params resultBlock:^{
         @strongify(self)
-        self.hintLabel.text = [NSString stringWithFormat:@"小提示：验证码将发送至您绑定的手机上(%@)",[self.userPhone stringByReplacingOccurrencesOfString:[self.userPhone substringWithRange:NSMakeRange(3,4)]withString:@"****"]];
         [YFToast showMessage:@"验证码发送成功" inView:self.view];
         self.task = [WKTimer execTask:[WKProxy proxyWithTarget:self]
                              selector:@selector(doTask)

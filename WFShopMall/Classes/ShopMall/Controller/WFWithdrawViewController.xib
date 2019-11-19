@@ -48,9 +48,9 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付宝" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wX9-Kk-4ds">
-                            <rect key="frame" x="65" y="9" width="49" height="16"/>
+                            <rect key="frame" x="65" y="9" width="49" height="18"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="16" id="Ggp-k9-p71"/>
+                                <constraint firstAttribute="height" constant="18" id="Ggp-k9-p71"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="16"/>
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>

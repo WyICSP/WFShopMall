@@ -41,7 +41,7 @@
 		19CD7FD5ADA5468F38A80878 /* WFShopMall.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = WFShopMall.podspec; path = ../WFShopMall.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		2BA4B95EEBCDF5629352F4CE /* Pods-WFShopMall_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WFShopMall_Tests.release.xcconfig"; path = "Target Support Files/Pods-WFShopMall_Tests/Pods-WFShopMall_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		402B94ED9260DFDBFBD231CE /* Pods_WFShopMall_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WFShopMall_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6003F58A195388D20070C39A /* WFShopMall_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WFShopMall_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6003F58A195388D20070C39A /* 云智充合作版.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "云智充合作版.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		6003F591195388D20070C39A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -114,7 +114,7 @@
 		6003F58B195388D20070C39A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6003F58A195388D20070C39A /* WFShopMall_Example.app */,
+				6003F58A195388D20070C39A /* 云智充合作版.app */,
 				6003F5AE195388D20070C39A /* WFShopMall_Tests.xctest */,
 			);
 			name = Products;
@@ -223,7 +223,7 @@
 			);
 			name = WFShopMall_Example;
 			productName = WFShopMall;
-			productReference = 6003F58A195388D20070C39A /* WFShopMall_Example.app */;
+			productReference = 6003F58A195388D20070C39A /* 云智充合作版.app */;
 			productType = "com.apple.product-type.application";
 		};
 		6003F5AD195388D20070C39A /* WFShopMall_Tests */ = {
@@ -563,7 +563,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "云智充合作版";
 				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};
@@ -581,7 +581,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "云智充合作版";
 				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};

@@ -127,6 +127,8 @@
 - (void)getShareNumWithModel:(WFProductListModel *)model {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params safeSetObject:model.ticketId forKey:@"ticketId"];
+    [params safeSetObject:model.productId forKey:@"productId"];
+    
     @weakify(self)
     [WFShopDataTool getShareNumWithParams:params resultBlock:^(NSString * _Nonnull ticketId) {
         @strongify(self)
@@ -187,7 +189,7 @@
         // 收益
         WFShopMallIncomeViewController *incomeVC = [[WFShopMallIncomeViewController alloc] init];
         incomeVC.hidesBottomBarWhenPushed = YES;
-        incomeVC.urlString = @"http://dev.jx9n.cn/yzc-ebus-front-ua/#/partnerProfit";
+        incomeVC.urlString =[NSString stringWithFormat:@"%@yzc-ebus-front/#/partner/profit/index?",H5_HOST] ;
         [self.navigationController pushViewController:incomeVC animated:NO];
     }
 }

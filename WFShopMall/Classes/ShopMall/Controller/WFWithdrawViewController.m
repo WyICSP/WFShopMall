@@ -14,6 +14,7 @@
 #import "SKSafeObject.h"
 #import "UserData.h"
 #import "WKHelp.h"
+#import "WKSetting.h"
 
 
 
@@ -179,11 +180,10 @@
         
         // 提交事件
         [WFShopDataTool WithdrawWithParams:params resultBlock:^(NSDictionary * _Nonnull detailID) {
-#warning  这里有一个与h5 的交互
             [SVProgressHUD dismiss];
-//            detailId
+            self.moneyTextField.text = @"";
             WFShopMallIncomeViewController *incomeVC = [[WFShopMallIncomeViewController alloc]init];
-            incomeVC.urlString = [NSString stringWithFormat:@"http://dev.jx9n.cn/yzc-ebus-front/#/partnerProfitCashDetail?id=%@",detailID[@"detailId"]];
+            incomeVC.urlString = [NSString stringWithFormat:@"%@yzc-ebus-front/#/partner/profit/cashDetail?id=%@",H5_HOST,detailID[@"detailId"]];
             [self.navigationController pushViewController:incomeVC animated:YES];
             
             
