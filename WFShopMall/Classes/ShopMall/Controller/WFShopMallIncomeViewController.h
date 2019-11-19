@@ -6,7 +6,6 @@
 //
 
 #import <WFKitMain/WFBaseNoNavWebViewController.h>
-#import "YukiWebProgressLayer.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WFShopMallIncomeViewController : WFBaseNoNavWebViewController
@@ -15,10 +14,6 @@ NS_ASSUME_NONNULL_BEGIN
  加载url
  */
 @property (nonatomic, copy) NSString *urlString;
-/**
- 进度条
- */
-@property (nonatomic, strong)YukiWebProgressLayer *webProgressLayer;
 
 @end
 

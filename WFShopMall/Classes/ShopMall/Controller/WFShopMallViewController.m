@@ -11,7 +11,6 @@
 #import "WFProductListTableViewCell.h"
 #import "WFStrategyViewController.h"
 #import "UITableView+YFExtension.h"
-#import "WFIncomeViewController.h"
 #import "WFProductMsgShareView.h"
 #import "SVProgressHUD+YFHud.h"
 #import "WFShopMallHeadView.h"

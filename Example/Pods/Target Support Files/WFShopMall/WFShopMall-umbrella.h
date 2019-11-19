@@ -12,7 +12,6 @@
 
 #import "IncomeJsApiTest.h"
 #import "WFBindWithdrawViewController.h"
-#import "WFIncomeViewController.h"
 #import "WFProductListViewController.h"
 #import "WFShopMallIncomeViewController.h"
 #import "WFShopMallSearchViewController.h"
