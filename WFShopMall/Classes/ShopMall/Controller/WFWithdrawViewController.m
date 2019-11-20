@@ -181,6 +181,8 @@
         // 提交事件
         [WFShopDataTool WithdrawWithParams:params resultBlock:^(NSDictionary * _Nonnull detailID) {
             [SVProgressHUD dismiss];
+            // 提现成功做一个标记  用户点击a返回按钮返回到根视图
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"withdeawToRoot"];
             self.moneyTextField.text = @"";
             WFShopMallIncomeViewController *incomeVC = [[WFShopMallIncomeViewController alloc]init];
             incomeVC.urlString = [NSString stringWithFormat:@"%@yzc-ebus-front/#/partner/profit/cashDetail?id=%@",H5_HOST,detailID[@"detailId"]];
