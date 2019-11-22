@@ -444,7 +444,7 @@
     _tableViewHeaderView.height = self.activityModel.open ? 200.0f :50.0f;
     _topActivityView.hidden = !self.activityModel.open;
     _topView.y = self.activityModel.open ? 150.0f :20.0f;
-    [_topActivityView.activityImageView sd_setImageWithURL:[NSURL URLWithString:self.activityModel.value]];
+    [_topActivityView.activityImageView sd_setImageWithURL:[NSURL URLWithString:self.activityModel.value] placeholderImage:[UIImage imageNamed:@"pfang"]];
     
     
     
@@ -457,7 +457,7 @@
     
     if (!_popView) {
         _popView = [[[NSBundle bundleForClass:[self class]] loadNibNamed:@"WFShopMallPopUPView" owner:nil options:nil] firstObject];
-        _popView.frame = CGRectMake(ScreenWidth -136.0-15.0, 60.0f, 136.0f, 98.0f);
+        _popView.frame = CGRectMake(ScreenWidth -136.0-15.0, NavHeight-4, 136.0f, 98.0f);
         _popView.alpha = 0.0f;
         @weakify(self)
         _popView.operateBlock = ^(NSInteger type) {

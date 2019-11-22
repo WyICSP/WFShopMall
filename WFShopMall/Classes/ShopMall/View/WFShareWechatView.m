@@ -81,7 +81,7 @@
         [YFMediatorManager shareWechatWithWebpageUrl:self.shareUrl title:self.title description:self.desc thumbImage:self.imgView.image scnce:0];
     }else if (sender.tag == 200) {
         //微信朋友圈
-        [YFMediatorManager shareWechatWithWebpageUrl:self.shareUrl title:self.title description:self.desc thumbImage:self.imgView.image scnce:0];
+        [YFMediatorManager shareWechatWithWebpageUrl:self.shareUrl title:self.title description:self.desc thumbImage:self.imgView.image scnce:1];
     }
 }
 
@@ -95,7 +95,7 @@
     self.imgURL = [NSString stringWithFormat:@"%@",[dict safeJsonObjForKey:@"imgURL"]];
     //商品描述
     self.desc = [NSString stringWithFormat:@"%@",[dict safeJsonObjForKey:@"desc"]];
-    [self.imgView sd_setImageWithURL:[NSURL URLWithString:self.imgURL] placeholderImage:[UIImage imageNamed:@"pfang"]];
+    [self.imgView sd_setImageWithURL:[NSURL URLWithString:self.imgURL] placeholderImage:[UIImage imageNamed:@"shareIcon"]];
 }
 
 - (UIImageView *)imgView {
