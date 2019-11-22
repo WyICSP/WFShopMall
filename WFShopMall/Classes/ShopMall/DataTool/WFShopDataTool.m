@@ -16,6 +16,8 @@
 #import "WKSetting.h"
 #import "YFToast.h"
 #import "WKHelp.h"
+#import "WFShopActivityModel.h"
+#import "WFShopRebateStatisticsModel.h"
 
 @implementation WFShopDataTool
 
@@ -146,6 +148,60 @@
     } failure:^(NSError *error) {
         
     }];
+    
+}
+
+
+
+
+/**
+ 双十二活动 获取商城头部活动广告
+ @param params 参数
+ @param resultBlock 返回结果
+ 
+ */
++ (void)getActivityDataResultBlock:(void(^)( WFShopActivityModel *model))resultBlock
+                         failBlock:(void(^)(void))failBlock {
+
+    NSString *path = [NSString stringWithFormat:@"%@yzc-rebate-ticket/ad/getAdvice/3?project=0",NEW_HOST_URL];
+    [WKRequest getWithURLString:path parameters:@{} isShowHud:NO success:^(WKBaseModel *baseModel) {
+        if (CODE_ZERO) {
+            resultBlock([WFShopActivityModel mj_objectWithKeyValues:baseModel.data]);
+        }else {
+            [YFToast showMessage:baseModel.message inView:[[YFKeyWindow shareInstance] getCurrentVC].view];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+    
+}
+
+
+/**
+ 双十二活动 获取优惠统计返利开关接口
+ 这个链接是url写死的 下次要用
+ @param params 参数
+ @param resultBlock 返回结果
+ */
++ (void)getStatisticsDataResultBlock:(void(^)( WFShopRebateStatisticsModel *model))resultBlock
+                           failBlock:(void(^)(void))failBlock {
+    
+//    http://dev.jx9n.cn:10001/yzc-rebate-ticket/rebate/activity/queryPartnerRebateConfig
+    
+    NSString *path = [NSString stringWithFormat:@"%@yzc-rebate-ticket/rebate/activity/queryPartnerRebateConfig",NEW_HOST_URL];
+    [WKRequest getWithURLString:path parameters:@{} isShowHud:NO success:^(WKBaseModel *baseModel) {
+        if (CODE_ZERO) {
+            resultBlock([WFShopRebateStatisticsModel mj_objectWithKeyValues:baseModel.data]);
+        }else {
+            [YFToast showMessage:baseModel.message inView:[[YFKeyWindow shareInstance] getCurrentVC].view];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+    
+    
+    
+    
     
 }
 

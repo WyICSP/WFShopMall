@@ -12,6 +12,7 @@
 #import "UserData.h"
 #import "WKHelp.h"
 #import "WFWithdrawViewController.h"
+#import "WFShopPublicAPI.h"
 @implementation IncomeJsApiTest
 
 /**跳转到提现页面*/
@@ -38,6 +39,16 @@
         [[[YFKeyWindow shareInstance] getCurrentVC].navigationController popViewControllerAnimated:YES];
         completionHandler(msg,YES);
     }
+}
+
+
+/**分享*/
+- (void)openProfit:(NSDictionary *)msg :(JSCallback) completionHandler
+{
+    WFShopPublicAPI *api = [[WFShopPublicAPI alloc] init];
+    [api openShareViewCtrlWithParams:msg];
+    completionHandler(@"",YES);
+    
 }
 
 /** 获取版本号*/

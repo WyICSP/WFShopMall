@@ -27,7 +27,7 @@ PODS:
     - WYAutoLayout
   - WFHomeAddress (0.1.5):
     - MJExtension
-  - WFKitLogin (0.3.8):
+  - WFKitLogin (0.3.9):
     - dsBridge
     - MJExtension
     - MJRefresh
@@ -35,7 +35,7 @@ PODS:
     - WFHomeAddress
     - WFKitMain
     - WKFunComponents
-  - WFKitMain (0.2.4):
+  - WFKitMain (0.2.5):
     - dsBridge
     - WFBasics
   - WFShopMall (0.2.0):
@@ -52,7 +52,7 @@ DEPENDENCIES:
   - WFShopMall (from `../`)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - AFNetworking
     - dsBridge
     - MJExtension
@@ -80,12 +80,12 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   WFBasics: 24f6c700e85e6db1cd990ae60763c14267f5ab54
   WFHomeAddress: 4eb27df8a873af9161d147f8b10a1d50ba725467
-  WFKitLogin: 3aecad7c1d409b787615c763997ab4597c68b84c
-  WFKitMain: d5d92b5a4fc53c24abeebe93773df4918680c88b
+  WFKitLogin: 9df6c2f02817159ca3371de7f04480f74f4f85a4
+  WFKitMain: d79e7add7a2c0054ff1e68bab4ae072c9c6d0bdb
   WFShopMall: 1ea57ff3153c6507f1157e9925615e6a9af862a9
   WKFunComponents: a4cde3e92b1c5841be91a9eefd7968c8ce903f73
   WYAutoLayout: 3cb136ddc2efa9faaecf15876e6a9b2a6fd7c6cb
 
 PODFILE CHECKSUM: edeb229b4aba07d8135d92ef2358a23aa4199bdb
 
-COCOAPODS: 1.7.3
+COCOAPODS: 1.8.4

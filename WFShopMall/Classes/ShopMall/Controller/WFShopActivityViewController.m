@@ -1,22 +1,18 @@
 //
-//  WFShopMallIncomeViewController.m
+//  WFShopActivityViewController.m
 //  AFNetworking
 //
-//  Created by YZC on 2019/11/12.
+//  Created by YZC on 2019/11/20.
 //
 
-#import "WFShopMallIncomeViewController.h"
-#import "UserData.h"
-#import "dsbridge.h"
+#import "WFShopActivityViewController.h"
 #import "IncomeJsApiTest.h"
 #import "WKHelp.h"
-@interface WFShopMallIncomeViewController ()
-
-
+@interface WFShopActivityViewController ()
 
 @end
 
-@implementation WFShopMallIncomeViewController
+@implementation WFShopActivityViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,10 +20,6 @@
     
     [self.dwebview addJavascriptObject:[[IncomeJsApiTest alloc] init] namespace:nil];
 }
-
-
-
-
 
 /*
 #pragma mark - Navigation

@@ -26,12 +26,22 @@
 #import "WKHelp.h"
 #import "WFWithdrawViewController.h"
 #import "WFShopMallIncomeViewController.h"
+#import "WFShopMallTopActivityView.h"
+#import "WFShopMallPopUPView.h"
+#import "WFShopActivityViewController.h"
+#import "WFShopActivityModel.h"
+#import <SDWebImage/SDWebImage.h>
+#import "WFShopRebateStatisticsModel.h"
 
 @interface WFShopMallViewController ()<UITableViewDelegate,UITableViewDataSource>
 /**tableView*/
 @property (nonatomic, strong, nullable) UITableView *tableView;
 /**搜索条*/
 @property (nonatomic, strong, nullable) WFShopNavbarView *navBar;
+/**tableview 头视图*/
+@property (nonatomic ,strong, nullable) UIView *tableViewHeaderView;
+/**头部活动view*/
+@property (nonatomic ,strong, nullable) WFShopMallTopActivityView *topActivityView;
 /**topView*/
 @property (nonatomic, strong, nullable) WFShopMallTopView *topView;
 /// 分享的弹出视图
@@ -46,7 +56,12 @@
 @property (nonatomic, assign) NSInteger currentPage;
 /// 筛选 默认红包向上
 @property (nonatomic, copy) NSString *ptype;
-
+/**popView */
+@property (nonatomic, strong) WFShopMallPopUPView *popView;
+/**双十二活动头部model*/
+@property (nonatomic, strong) WFShopActivityModel *activityModel;
+/**优惠返利统计 model*/
+@property (nonatomic, strong) WFShopRebateStatisticsModel *rebateStatisticsModel;
 @end
 
 @implementation WFShopMallViewController
@@ -64,6 +79,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+    [self.popView dissmissView];
     [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
 
@@ -76,6 +92,10 @@
     [self.view addSubview:self.navBar];
     //获取数据
     [self getProductListData];
+    //双十二 活动 头部
+    [self getActivityData];
+    // 双十二 活动 返利优惠统计
+    [self getStatisticsData];
     
 }
 
@@ -121,6 +141,38 @@
     }
     [self.tableView reloadData];
 }
+
+/**双十二活动获取数据头部广告 */
+
+-(void)getActivityData {
+    
+    @weakify(self)
+    [WFShopDataTool getActivityDataResultBlock:^(WFShopActivityModel * _Nonnull model) {
+        @strongify(self)
+        self.activityModel = model;
+        self.tableView.tableHeaderView = self.tableViewHeaderView;
+        [self.tableView reloadData];
+        
+    } failBlock:^{
+        
+    }];
+
+}
+
+/**双十二活动获取数据 特惠返利统计开关接口*/
+- (void)getStatisticsData {
+    
+    [WFShopDataTool getStatisticsDataResultBlock:^(WFShopRebateStatisticsModel * _Nonnull model) {
+        self.rebateStatisticsModel = model;
+        
+    } failBlock:^{
+        
+    }];
+    
+    
+    
+}
+
 
 ///  获取分享批次号 分享前调用
 - (void)getShareNumWithModel:(WFProductListModel *)model {
@@ -178,11 +230,8 @@
         search.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:search animated:NO];
     }else if(tag ==20)  {
-        WFStrategyViewController *strategy = [[WFStrategyViewController alloc] init];
-        strategy.urlString = [NSString stringWithFormat:@"%@yzc_business_h5/page/strategy.html",H5_HOST];
-        strategy.progressColor = NavColor;
-        strategy.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:strategy animated:YES];
+        self.popView.alpha == 0.0 ? [self.popView popView] : [self.popView dissmissView];
+        
     }else{
     
         // 收益
@@ -225,6 +274,46 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat offset = scrollView.contentOffset.y;
     self.goTopBtn.alpha = offset / 200;
+    
+    if (self.popView.alpha ==1.0) {
+          [self.popView dissmissView];
+      }
+}
+
+/**点击头部活动链接 跳转到活动页面*/
+- (void)activityAction {
+    WFShopActivityViewController *ActivityVC = [[WFShopActivityViewController alloc]init];
+    ActivityVC.urlString = self.activityModel.target;
+    ActivityVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:ActivityVC animated:YES];
+    
+    
+}
+
+/**头部更多事件*/
+- (void)topMoreAction:(NSInteger)type {
+    
+    if (type == 0) {
+        // 特惠统计
+        WFShopActivityViewController *ActivityVC = [[WFShopActivityViewController alloc]init];
+        
+          ActivityVC.urlString = self.rebateStatisticsModel.partnerRebateRecodeUrl;
+//        ActivityVC.urlString = @"http://dev.jx9n.cn/yzc-ebus-front/#/WX/WXLanding";
+        ActivityVC.hidesBottomBarWhenPushed = YES;
+          [self.navigationController pushViewController:ActivityVC animated:YES];
+        
+    }else{
+        // 攻略
+        WFStrategyViewController *strategy = [[WFStrategyViewController alloc] init];
+        strategy.urlString = [NSString stringWithFormat:@"%@yzc_business_h5/page/strategy.html",H5_HOST];
+        strategy.progressColor = NavColor;
+        strategy.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:strategy animated:YES];
+        
+    }
+    
+    
+    
 }
 
 #pragma mark get set
@@ -235,7 +324,7 @@
         _tableView.dataSource = self;
         _tableView.rowHeight = 127.0f;
         _tableView.separatorStyle = 0;
-        _tableView.tableHeaderView = self.topView;
+        _tableView.tableHeaderView = self.tableViewHeaderView;
         [_tableView addEmptyView];
         _tableView.emptyView.backgroundColor = UIColor.clearColor;
         _tableView.emptyView.emptyLbl.hidden = YES;
@@ -268,13 +357,13 @@
 }
 
 /// 筛选的 view
-- (WFShopMallTopView *)topView {
-    if (!_topView) {
-        _topView = [[[NSBundle bundleForClass:[self class]] loadNibNamed:@"WFShopMallTopView" owner:nil options:nil] firstObject];
-        _topView.frame = CGRectMake(0, self.navBar.maxY, ScreenWidth, 50.0f);
-    }
-    return _topView;
-}
+//- (WFShopMallTopView *)topView {
+//    if (!_topView) {
+//        _topView = [[[NSBundle bundleForClass:[self class]] loadNibNamed:@"WFShopMallTopView" owner:nil options:nil] firstObject];
+//        _topView.frame = CGRectMake(0, self.navBar.maxY, ScreenWidth, 50.0f);
+//    }
+//    return _topView;
+//}
 
 /// 分享的弹出视图
 - (WFProductMsgShareView *)popShareView {
@@ -328,6 +417,61 @@
         _models = [[NSMutableArray alloc] init];
     }
     return _models;
+}
+
+/**tableviewHeaderView*/
+- (UIView *)tableViewHeaderView{
+    
+    if (!_tableViewHeaderView) {
+        
+        _tableViewHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0.0f, self.navBar.maxY, ScreenWidth, 200.0f)];
+        /**活动view*/
+        _topActivityView = [[[NSBundle bundleForClass:[self class]] loadNibNamed:@"WFShopMallTopActivityView" owner:nil options:nil] firstObject];
+        _topActivityView.frame = CGRectMake(0.0f, 0.0f, _tableViewHeaderView.width, 150.0f);
+        @weakify(self)
+        _topActivityView.operateBlock = ^{
+            @strongify(self)
+            [self activityAction];
+        };
+        /**合伙人福利专享*/
+        _topView = [[[NSBundle bundleForClass:[self class]] loadNibNamed:@"WFShopMallTopView" owner:nil options:nil] firstObject];
+        _topView.frame = CGRectMake(0.0f, _topActivityView.height, ScreenWidth, 50.0f);
+        
+        [_tableViewHeaderView addSubview:_topActivityView];
+        [_tableViewHeaderView addSubview:_topView];
+    }
+    
+    _tableViewHeaderView.height = self.activityModel.open ? 200.0f :50.0f;
+    _topActivityView.hidden = !self.activityModel.open;
+    _topView.y = self.activityModel.open ? 150.0f :20.0f;
+    [_topActivityView.activityImageView sd_setImageWithURL:[NSURL URLWithString:self.activityModel.value]];
+    
+    
+    
+    return _tableViewHeaderView;
+    
+}
+
+/**弹出框*/
+-(WFShopMallPopUPView *)popView {
+    
+    if (!_popView) {
+        _popView = [[[NSBundle bundleForClass:[self class]] loadNibNamed:@"WFShopMallPopUPView" owner:nil options:nil] firstObject];
+        _popView.frame = CGRectMake(ScreenWidth -136.0-15.0, 60.0f, 136.0f, 98.0f);
+        _popView.alpha = 0.0f;
+        @weakify(self)
+        _popView.operateBlock = ^(NSInteger type) {
+            @strongify(self)
+            [self topMoreAction:type];
+        };
+        [self.view addSubview:_popView];
+    }
+    _popView.height = self.rebateStatisticsModel.partnerHasRebate ? 98.0 : 50.0f;
+    _popView.specialStatisticsBut.hidden = !self.rebateStatisticsModel.partnerHasRebate;
+    [_popView.specialStatisticsBut setTitle:[NSString stringWithFormat:@"   %@",self.rebateStatisticsModel.partnerButtonTitle] forState:UIControlStateNormal];
+    _popView.horizontalLine.hidden = !self.rebateStatisticsModel.partnerHasRebate;
+
+    return _popView;
 }
 
 @end

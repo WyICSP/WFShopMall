@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'WFShopMall'
-  s.version          = '0.2.0'
+  s.version          = '0.2.1'
   s.summary          = 'WFShopMall导购券'
 
 # This description is used to generate tags and improve search results.
