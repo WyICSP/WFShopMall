@@ -10,7 +10,6 @@
 #import "YFMediatorManager+YFKitMain.h"
 #import "WFShopMallViewController.h"
 #import "WFViewController.h"
-#import "WFLoginViewController.h"
 #import "WKHelp.h"
 
 @implementation WFAppDelegate
@@ -76,7 +75,6 @@
         //如果没有登录
             UITabBarController *rootVC        = [YFMediatorManager rootTabBarCcontroller];
             [YFMediatorManager addChildVC:[WFShopMallViewController new] normalImageName:@"delete" selectedImageName:@"delete" title:@"商城"];
-            [YFMediatorManager addChildVC:[WFLoginViewController shareInstance] normalImageName:@"delete" selectedImageName:@"delete" title:@"登录"];
             [YFMediatorManager addChildVC:[WFViewController new] normalImageName:@"delete" selectedImageName:@"delete" title:@"我的片区"];
             [YFMediatorManager setGlobalBackGroundColor:[UIColor whiteColor]];
             [YFMediatorManager setNarBarGlobalTextColor:[UIColor blackColor] andFontSize:18];
