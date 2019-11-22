@@ -124,7 +124,7 @@
     [SVProgressHUD dismiss];
     // 结束刷新
     [self.tableView.mj_footer endRefreshing];
-    
+    [self.tableView.mj_header endRefreshing];
     if (self.currentPage == 1)
         [self.models removeAllObjects];
     
@@ -331,6 +331,23 @@
         _tableView.emptyView.emptyImg.image = [UIImage imageNamed:@"noMoreGoods"];
         _tableView.emptyView.centerCons.constant = -50.0f;
         @weakify(self)
+        
+        MJRefreshStateHeader *header = [MJRefreshStateHeader headerWithRefreshingBlock:^{
+                @strongify(self)
+                self.currentPage = 1;
+                [self getProductListData];
+                [self getStatisticsData];
+                [self getActivityData];
+            }];
+            header.lastUpdatedTimeLabel.hidden = YES;
+                // 设置下拉刷新时的三种状态的文本
+            [header setTitle:@"下拉可以刷新" forState:MJRefreshStateIdle];
+            [header setTitle:@"松开立即刷新" forState:MJRefreshStatePulling];
+            [header setTitle:@"正在刷新数据中..." forState:MJRefreshStateRefreshing];
+            header.stateLabel.font = [UIFont boldSystemFontOfSize:14];
+        
+            _tableView.mj_header = header;
+        
         _tableView.mj_footer = [MJRefreshAutoStateFooter footerWithRefreshingBlock:^{
             @strongify(self)
             self.currentPage ++;
