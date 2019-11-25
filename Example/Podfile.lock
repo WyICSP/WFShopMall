@@ -52,7 +52,7 @@ DEPENDENCIES:
   - WFShopMall (from `../`)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - AFNetworking
     - dsBridge
     - MJExtension
@@ -88,4 +88,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: edeb229b4aba07d8135d92ef2358a23aa4199bdb
 
-COCOAPODS: 1.7.3
+COCOAPODS: 1.8.4

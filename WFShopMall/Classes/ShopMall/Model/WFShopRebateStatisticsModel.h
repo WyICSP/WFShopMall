@@ -16,6 +16,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *partnerRebateRecodeUrl;
 /**当前模块开关*/
 @property (nonatomic, assign) BOOL partnerHasRebate;
+/**我的收益 是否隐藏 */
+@property (nonatomic,assign) BOOL hasPartnerEarnings;
+/**我的收益 标题*/
+@property (nonatomic, copy) NSString *partnerEarnings;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -164,7 +164,7 @@
     
     [WFShopDataTool getStatisticsDataResultBlock:^(WFShopRebateStatisticsModel * _Nonnull model) {
         self.rebateStatisticsModel = model;
-        
+        self.navBar;
     } failBlock:^{
         
     }];
@@ -370,6 +370,7 @@
             [self jumpSearchOrStrategyCtrlWithTag:tag];
         };
     }
+    [_navBar hideIncomeView:self.rebateStatisticsModel.hasPartnerEarnings];
     return _navBar;
 }
 
