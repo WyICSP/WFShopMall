@@ -51,6 +51,14 @@
     
 }
 
+/**判断时候隐藏当前导航栏*/
+- (void)showNativeTitle:(BOOL )msg :(JSCallback) completionHandler{
+    if (!msg) {
+        [[NSNotificationCenter defaultCenter ]postNotificationName:@"showNativeTitle" object:nil];
+    }
+    completionHandler(@"",YES);
+}
+
 /** 获取版本号*/
 - (NSString *)getAppVersion:(NSString *)msg {
     return APP_VERSION;
