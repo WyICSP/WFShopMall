@@ -152,6 +152,8 @@
         @strongify(self)
         [self completionHandlerWithModels:models];
     } failBlock:^{
+        [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
         //结束加载
         [SVProgressHUD dismiss];
     }];
