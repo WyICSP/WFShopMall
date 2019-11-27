@@ -130,6 +130,7 @@
     
     //将获取的数据添加到数组中
     if (models.count != 0) [self.models addObjectsFromArray:models];
+    self.tableView.mj_footer.hidden = self.models.count < 20;
     
     //是否显示空页面
     [self.tableView isShowEmptyView:self.models.count == 0];
@@ -326,6 +327,7 @@
         _tableView.separatorStyle = 0;
         _tableView.tableHeaderView = self.tableViewHeaderView;
         [_tableView addEmptyView];
+        _tableView.emptyView.frame = CGRectMake(0, 250.0f, ScreenWidth, ScreenHeight-NavHeight-TabbarHeight-250);
         _tableView.emptyView.backgroundColor = UIColor.clearColor;
         _tableView.emptyView.emptyLbl.hidden = YES;
         _tableView.emptyView.emptyImg.image = [UIImage imageNamed:@"noMoreGoods"];
@@ -461,7 +463,7 @@
     
     _tableViewHeaderView.height = self.activityModel.open ? 200.0f :50.0f;
     _topActivityView.hidden = !self.activityModel.open;
-    _topView.y = self.activityModel.open ? 150.0f :20.0f;
+    _topView.frame = CGRectMake(0.0f, self.activityModel.open ? _topActivityView.height :0.0f, ScreenWidth, 50.0f);
     [_topActivityView.activityImageView sd_setImageWithURL:[NSURL URLWithString:self.activityModel.value] placeholderImage:[UIImage imageNamed:@"pfang"]];
     
     
@@ -493,3 +495,4 @@
 }
 
 @end
+

@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.dwebview.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight);
+    self.dwebview.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight-NavHeight);
     self.title = @"邀请攻略";
 }
 
