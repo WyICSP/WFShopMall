@@ -33,7 +33,7 @@
 #import <SDWebImage/SDWebImage.h>
 #import "WFShopRebateStatisticsModel.h"
 
-@interface WFShopMallViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface WFShopMallViewController ()<UITableViewDelegate,UITableViewDataSource,UIGestureRecognizerDelegate>
 /**tableView*/
 @property (nonatomic, strong, nullable) UITableView *tableView;
 /**搜索条*/
@@ -62,6 +62,8 @@
 @property (nonatomic, strong) WFShopActivityModel *activityModel;
 /**优惠返利统计 model*/
 @property (nonatomic, strong) WFShopRebateStatisticsModel *rebateStatisticsModel;
+/// 手势是否启动
+@property (nonatomic, assign) BOOL isCanUseSideBack;
 @end
 
 @implementation WFShopMallViewController
@@ -79,9 +81,45 @@
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [self.popView dissmissView];
+    if (self.popView.alpha ==1.0f) {
+       [self.popView dissmissView];
+    }
     [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self cancelSideBack];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self startSideBack];
+}
+
+/**
+ * 关闭ios右滑返回
+ */
+-(void)cancelSideBack{
+    self.isCanUseSideBack = NO;
+    if([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.delegate = self;
+    }
+}
+/**
+ 开启ios右滑返回
+ */
+- (void)startSideBack {
+    self.isCanUseSideBack=YES;
+    if([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.delegate = nil;
+    }
+}
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer*)gestureRecognizer {
+    return self.isCanUseSideBack;
+}
+
 
 #pragma mark 私有方法
 - (void)setUI {
@@ -495,4 +533,5 @@
 }
 
 @end
+
 
