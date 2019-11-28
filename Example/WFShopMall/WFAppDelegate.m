@@ -11,7 +11,7 @@
 #import "WFShopMallViewController.h"
 #import "WFViewController.h"
 #import "WKHelp.h"
-
+#import "WFLoginViewController.h"
 @implementation WFAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -76,6 +76,7 @@
             UITabBarController *rootVC        = [YFMediatorManager rootTabBarCcontroller];
             [YFMediatorManager addChildVC:[WFShopMallViewController new] normalImageName:@"delete" selectedImageName:@"delete" title:@"商城"];
             [YFMediatorManager addChildVC:[WFViewController new] normalImageName:@"delete" selectedImageName:@"delete" title:@"我的片区"];
+            [YFMediatorManager addChildVC:[WFLoginViewController shareInstance] normalImageName:@"delete" selectedImageName:@"delete" title:@"denglu"];
             [YFMediatorManager setGlobalBackGroundColor:[UIColor whiteColor]];
             [YFMediatorManager setNarBarGlobalTextColor:[UIColor blackColor] andFontSize:18];
             

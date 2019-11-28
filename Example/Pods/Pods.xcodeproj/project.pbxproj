@@ -3720,6 +3720,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
 			productRefGroup = F341B2D150D8EB1E05679EA97C87EBBB /* Products */;
@@ -4645,6 +4646,23 @@
 			};
 			name = Debug;
 		};
+		05B1D7F1DA930B0C0D8EEA8E6FE7966C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D1E6138CEEA99104E620FF9462466A86 /* WKFunComponents.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/WKFunComponents";
+				IBSC_MODULE = WKFunComponents;
+				INFOPLIST_FILE = "Target Support Files/WKFunComponents/ResourceBundle-WKFunComponents-WKFunComponents-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_NAME = WKFunComponents;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
 		05CC5CB003462B8AEE4141138E0D39E5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A8D63B4BBD42D16F0E507107E2693C04 /* WYAutoLayout.xcconfig */;
@@ -4743,6 +4761,23 @@
 			};
 			name = Release;
 		};
+		17DC765B7B2C330FCF6D573077DD83FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B22D16217831C5156A9DB2F28750BADC /* WFBasics.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/WFBasics";
+				IBSC_MODULE = WFBasics;
+				INFOPLIST_FILE = "Target Support Files/WFBasics/ResourceBundle-WFBasics-WFBasics-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_NAME = WFBasics;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
 		182A2115EE3DF2FB3EFF578D1C54698E /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BB5DD055AA33BE415D53F4078C0A04C3 /* WFKitMain.xcconfig */;
@@ -4774,6 +4809,23 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		19C50FD283C4C48D0465A063429DDA44 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D1E6138CEEA99104E620FF9462466A86 /* WKFunComponents.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/WKFunComponents";
+				IBSC_MODULE = WKFunComponents;
+				INFOPLIST_FILE = "Target Support Files/WKFunComponents/ResourceBundle-WKFunComponents-WKFunComponents-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_NAME = WKFunComponents;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
 		};
 		222622C6C78848525A86C81CE1BF8359 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -4836,22 +4888,6 @@
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		36180D244BD9E1B3497A7B010D26160B /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D1E6138CEEA99104E620FF9462466A86 /* WKFunComponents.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/WKFunComponents";
-				INFOPLIST_FILE = "Target Support Files/WKFunComponents/ResourceBundle-WKFunComponents-WKFunComponents-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_NAME = WKFunComponents;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
 		};
@@ -4949,47 +4985,16 @@
 			};
 			name = Release;
 		};
-		56F75A045EB810AE564EDC2ABC9D5016 /* Debug */ = {
+		5FE89821A0F914E6B5F657BF8CBA3DC5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D1E6138CEEA99104E620FF9462466A86 /* WKFunComponents.xcconfig */;
+			baseConfigurationReference = B22D16217831C5156A9DB2F28750BADC /* WFBasics.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/WKFunComponents";
-				INFOPLIST_FILE = "Target Support Files/WKFunComponents/ResourceBundle-WKFunComponents-WKFunComponents-Info.plist";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/WFBasics";
+				IBSC_MODULE = WFBasics;
+				INFOPLIST_FILE = "Target Support Files/WFBasics/ResourceBundle-WFBasics-WFBasics-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_NAME = WKFunComponents;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		59D999CB7338A84701EB5411BE2ACFA5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 29ED7AD5800620FBE99B920F0E241721 /* WFShopMall.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/WFShopMall";
-				INFOPLIST_FILE = "Target Support Files/WFShopMall/ResourceBundle-WFShopMall-WFShopMall-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_NAME = WFShopMall;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
-		5C312C768054A5D902D5221670B988BC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB5DD055AA33BE415D53F4078C0A04C3 /* WFKitMain.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/WFKitMain";
-				INFOPLIST_FILE = "Target Support Files/WFKitMain/ResourceBundle-WFKitMain-WFKitMain-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_NAME = WFKitMain;
+				PRODUCT_NAME = WFBasics;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -5060,6 +5065,23 @@
 			};
 			name = Debug;
 		};
+		670B90169BC6FCAAD6F323CB23ABE893 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA4A8854DB7FD679CE98B63BCC94FF05 /* WFKitLogin.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/WFKitLogin";
+				IBSC_MODULE = WFKitLogin;
+				INFOPLIST_FILE = "Target Support Files/WFKitLogin/ResourceBundle-WFKitLogin-WFKitLogin-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_NAME = WFKitLogin;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
 		671387507B5BE097810E913BF771312D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 325028B0BA4BC3A72235604142E85291 /* SDWebImage.xcconfig */;
@@ -5124,6 +5146,40 @@
 			};
 			name = Debug;
 		};
+		73E69086D37084C090D335FC4A21B8DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB5DD055AA33BE415D53F4078C0A04C3 /* WFKitMain.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/WFKitMain";
+				IBSC_MODULE = WFKitMain;
+				INFOPLIST_FILE = "Target Support Files/WFKitMain/ResourceBundle-WFKitMain-WFKitMain-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_NAME = WFKitMain;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		75035DCDD8569F932E94952C6215A545 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29ED7AD5800620FBE99B920F0E241721 /* WFShopMall.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/WFShopMall";
+				IBSC_MODULE = WFShopMall;
+				INFOPLIST_FILE = "Target Support Files/WFShopMall/ResourceBundle-WFShopMall-WFShopMall-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_NAME = WFShopMall;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
 		7711C4021E19F02E4BA0F6C2093958FC /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 09796867A26B5A4A6F28215D2A4F1786 /* AFNetworking.xcconfig */;
@@ -5184,22 +5240,6 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		7936533D09953BC3D202F734AE6AA3CE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 29ED7AD5800620FBE99B920F0E241721 /* WFShopMall.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/WFShopMall";
-				INFOPLIST_FILE = "Target Support Files/WFShopMall/ResourceBundle-WFShopMall-WFShopMall-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_NAME = WFShopMall;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
 		};
@@ -5390,22 +5430,6 @@
 			};
 			name = Debug;
 		};
-		9B2C6C011D4926A2DC3FCE6966CE86C0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B22D16217831C5156A9DB2F28750BADC /* WFBasics.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/WFBasics";
-				INFOPLIST_FILE = "Target Support Files/WFBasics/ResourceBundle-WFBasics-WFBasics-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_NAME = WFBasics;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
 		9E6534D24B62DF8346F27A5DD19CE522 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6C0A73AB3C0B8268BF9CD8BB2762956C /* Pods-WFShopMall_Example.debug.xcconfig */;
@@ -5565,31 +5589,16 @@
 			};
 			name = Release;
 		};
-		B8DED14EF0C19CEDBBB8E786FE792324 /* Release */ = {
+		B73F0DB4C9E467A7969CA4C427069AAB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB5DD055AA33BE415D53F4078C0A04C3 /* WFKitMain.xcconfig */;
+			baseConfigurationReference = 29ED7AD5800620FBE99B920F0E241721 /* WFShopMall.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/WFKitMain";
-				INFOPLIST_FILE = "Target Support Files/WFKitMain/ResourceBundle-WFKitMain-WFKitMain-Info.plist";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/WFShopMall";
+				IBSC_MODULE = WFShopMall;
+				INFOPLIST_FILE = "Target Support Files/WFShopMall/ResourceBundle-WFShopMall-WFShopMall-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_NAME = WFKitMain;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
-		B9E4DD1223DAE535E4ABDE3B41FE82CE /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B22D16217831C5156A9DB2F28750BADC /* WFBasics.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/WFBasics";
-				INFOPLIST_FILE = "Target Support Files/WFBasics/ResourceBundle-WFBasics-WFBasics-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_NAME = WFBasics;
+				PRODUCT_NAME = WFShopMall;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -5725,22 +5734,6 @@
 			};
 			name = Release;
 		};
-		D845BB3E47BC1704B952E7CD2ECE72B6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BA4A8854DB7FD679CE98B63BCC94FF05 /* WFKitLogin.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/WFKitLogin";
-				INFOPLIST_FILE = "Target Support Files/WFKitLogin/ResourceBundle-WFKitLogin-WFKitLogin-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_NAME = WFKitLogin;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
 		E61777CBBD35D87D3F573DF8663F99A2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D8CEE826450D30B714DA55B6C99D38E6 /* MJExtension.xcconfig */;
@@ -5770,6 +5763,40 @@
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F16493E1A874A199B5B084F0887FE017 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA4A8854DB7FD679CE98B63BCC94FF05 /* WFKitLogin.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/WFKitLogin";
+				IBSC_MODULE = WFKitLogin;
+				INFOPLIST_FILE = "Target Support Files/WFKitLogin/ResourceBundle-WFKitLogin-WFKitLogin-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_NAME = WFKitLogin;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		F4BA488FD0089A5E902720C6D422D58C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB5DD055AA33BE415D53F4078C0A04C3 /* WFKitMain.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/WFKitMain";
+				IBSC_MODULE = WFKitMain;
+				INFOPLIST_FILE = "Target Support Files/WFKitMain/ResourceBundle-WFKitMain-WFKitMain-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_NAME = WFKitMain;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
 		};
@@ -5835,22 +5862,6 @@
 			};
 			name = Debug;
 		};
-		FBB317D4836E4361E2AC71EE042B7DB5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BA4A8854DB7FD679CE98B63BCC94FF05 /* WFKitLogin.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/WFKitLogin";
-				INFOPLIST_FILE = "Target Support Files/WFKitLogin/ResourceBundle-WFKitLogin-WFKitLogin-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_NAME = WFKitLogin;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -5866,8 +5877,8 @@
 		24E210B0ACF0DB6383555819F0820CBF /* Build configuration list for PBXNativeTarget "WFKitLogin-WFKitLogin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D845BB3E47BC1704B952E7CD2ECE72B6 /* Debug */,
-				FBB317D4836E4361E2AC71EE042B7DB5 /* Release */,
+				F16493E1A874A199B5B084F0887FE017 /* Debug */,
+				670B90169BC6FCAAD6F323CB23ABE893 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -5884,8 +5895,8 @@
 		3A8F1A0ADE216D2F9CA0F65214D80DAB /* Build configuration list for PBXNativeTarget "WFKitMain-WFKitMain" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5C312C768054A5D902D5221670B988BC /* Debug */,
-				B8DED14EF0C19CEDBBB8E786FE792324 /* Release */,
+				73E69086D37084C090D335FC4A21B8DA /* Debug */,
+				F4BA488FD0089A5E902720C6D422D58C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -5974,8 +5985,8 @@
 		8ED560551928C24B331DD0281F8E6CCE /* Build configuration list for PBXNativeTarget "WFBasics-WFBasics" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9B2C6C011D4926A2DC3FCE6966CE86C0 /* Debug */,
-				B9E4DD1223DAE535E4ABDE3B41FE82CE /* Release */,
+				5FE89821A0F914E6B5F657BF8CBA3DC5 /* Debug */,
+				17DC765B7B2C330FCF6D573077DD83FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -6010,8 +6021,8 @@
 		DC7C18E2044827E8FBAED4BB0E6BF445 /* Build configuration list for PBXNativeTarget "WKFunComponents-WKFunComponents" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				56F75A045EB810AE564EDC2ABC9D5016 /* Debug */,
-				36180D244BD9E1B3497A7B010D26160B /* Release */,
+				19C50FD283C4C48D0465A063429DDA44 /* Debug */,
+				05B1D7F1DA930B0C0D8EEA8E6FE7966C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -6019,8 +6030,8 @@
 		DD194DAE0EB684F4F6BE0B954115ACF8 /* Build configuration list for PBXNativeTarget "WFShopMall-WFShopMall" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7936533D09953BC3D202F734AE6AA3CE /* Debug */,
-				59D999CB7338A84701EB5411BE2ACFA5 /* Release */,
+				75035DCDD8569F932E94952C6215A545 /* Debug */,
+				B73F0DB4C9E467A7969CA4C427069AAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
