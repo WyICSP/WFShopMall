@@ -105,6 +105,8 @@
     [self.dwebview addJavascriptObject:[[IncomeJsApiTest alloc] init] namespace:nil];
     [self.dwebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.urlString]]];
     [self.dwebview addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:NULL];
+    //刷新
+    [YFNotificationCenter addObserver:self selector:@selector(reloadUrl) name:@"reloadUserCnter" object:nil];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
@@ -113,6 +115,10 @@
             [self.dwebview.title containsString:@"服务"] ? [self hideTabbar:NO] : [self hideTabbar:YES];
         }
     }
+}
+
+- (void)reloadUrl {
+    [self.dwebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.urlString]]];
 }
 
 /**
@@ -180,6 +186,7 @@
 
 - (void)dealloc {
     [self.dwebview removeObserver:self forKeyPath:@"title"];
+    [YFNotificationCenter removeObserver:self name:@"reloadUserCnter" object:nil];
 }
 
 
