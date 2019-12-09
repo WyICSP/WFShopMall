@@ -65,7 +65,7 @@
 - (void)jumpScanCtrl:(void(^)(NSDictionary *codeInfo))resultBlock {
         
     MMScanViewController *scan = [[MMScanViewController alloc] init];
-    scan.modalPresentationStyle = UIModalPresentationFullScreen;
+    scan.hidesBottomBarWhenPushed = YES;
     scan.scanInfoBlock = ^(NSDictionary *codeInfo) {
         resultBlock(codeInfo);
     };
