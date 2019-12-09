@@ -70,6 +70,7 @@
 /// 手势是否启动
 @property (nonatomic, assign) BOOL isCanUseSideBack;
 @property (nonatomic, assign) BOOL isTabbarHidden;
+@property (nonatomic, assign) BOOL isShowTab;
 @end
 
 @implementation WFShopMallViewController
@@ -117,7 +118,13 @@
     }
 }
 
+-(void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
+    self.isShowTab = NO;
+    [self.webProgressLayer finishedLoadWithError:nil];
+}
+
 - (void)reloadUrl {
+    self.isShowTab = YES;
     [self.dwebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.urlString]]];
 }
 
@@ -127,6 +134,7 @@
  @param hide 显示与隐藏
  */
 - (void)hideTabbar:(BOOL)hide {
+    if (self.isShowTab) return;
     // 内嵌页面 不操作tabbar
     if (![self.parentViewController isKindOfClass:[UINavigationController class]]) {
         return;

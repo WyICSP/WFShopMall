@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -72,12 +72,11 @@
                                 <constraint firstAttribute="height" constant="35" id="jEE-Cd-pt8"/>
                             </constraints>
                         </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sHi-PS-yfy">
-                            <rect key="frame" x="366" y="7.5" width="40" height="40"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sHi-PS-yfy">
+                            <rect key="frame" x="65" y="7.5" width="341" height="40"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="J49-qp-kq3"/>
-                                <constraint firstAttribute="width" constant="40" id="eld-Bh-VGf"/>
                             </constraints>
                             <state key="normal" image="WFShopMall.bundle/mallWithdrawRight"/>
                             <connections>
@@ -94,6 +93,7 @@
                         <constraint firstItem="U1Z-2d-FRZ" firstAttribute="leading" secondItem="4Ai-Y0-OC6" secondAttribute="leading" id="GH0-YL-8L8"/>
                         <constraint firstAttribute="trailing" secondItem="5OW-m1-0QJ" secondAttribute="trailing" id="Ida-2m-zsj"/>
                         <constraint firstItem="5OW-m1-0QJ" firstAttribute="top" secondItem="4Ai-Y0-OC6" secondAttribute="top" id="PdB-7x-Rsb"/>
+                        <constraint firstItem="sHi-PS-yfy" firstAttribute="leading" secondItem="iaW-WS-bCK" secondAttribute="trailing" constant="15" id="USA-Dk-dt8"/>
                         <constraint firstAttribute="bottom" secondItem="U1Z-2d-FRZ" secondAttribute="bottom" id="Uuv-lq-wKc"/>
                         <constraint firstItem="iaW-WS-bCK" firstAttribute="top" secondItem="5OW-m1-0QJ" secondAttribute="bottom" constant="9.5" id="Y30-m0-ghF"/>
                         <constraint firstAttribute="height" constant="55" id="aus-Tc-xMt"/>
