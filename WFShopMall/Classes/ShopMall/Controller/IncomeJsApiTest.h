@@ -6,11 +6,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "dsbridge.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface IncomeJsApiTest : NSObject
-
 @end
 
 NS_ASSUME_NONNULL_END

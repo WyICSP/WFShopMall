@@ -7,16 +7,29 @@
 
 #import "WFShopPublicAPI.h"
 #import "WFShareWechatView.h"
+#import "MMScanViewController.h"
+#import "WKTabbarController.h"
 #import "YFKeyWindow.h"
 #import "WKSetting.h"
 #import "UIView+Frame.h"
 #import "WKHelp.h"
+
 @interface WFShopPublicAPI ()
 /// 分享
 @property (nonatomic, strong, nullable) WFShareWechatView *shareView;
 @end
 
 @implementation WFShopPublicAPI
+
++ (instancetype)shareInstance {
+    static WFShopPublicAPI *pApi = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        pApi = [[WFShopPublicAPI alloc] init];
+    });
+    return pApi;
+}
+
 
 /**打开分享页面*/
 - (void)openShareViewCtrlWithParams:(NSDictionary *)params {
@@ -32,7 +45,6 @@
 }
 
 
-
 #pragma mark get
 /// 分享
 - (WFShareWechatView *)shareView {
@@ -43,6 +55,21 @@
         [YFWindow addSubview:_shareView];
     }
     return _shareView;
+}
+
+- (NSDictionary *)scanQRCodeWithParams:(NSDictionary *)params {
+    self.qrcodeInfo = params;
+    return params;
+}
+
+- (void)jumpScanCtrl:(void(^)(NSDictionary *codeInfo))resultBlock {
+        
+    MMScanViewController *scan = [[MMScanViewController alloc] init];
+    scan.modalPresentationStyle = UIModalPresentationFullScreen;
+    scan.scanInfoBlock = ^(NSDictionary *codeInfo) {
+        resultBlock(codeInfo);
+    };
+    [[[YFKeyWindow shareInstance] getCurrentVC].navigationController pushViewController:scan animated:YES];
 }
 
 @end

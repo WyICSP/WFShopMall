@@ -8,6 +8,7 @@
 #import "WFShopActivityViewController.h"
 #import "IncomeJsApiTest.h"
 #import "WKHelp.h"
+
 @interface WFShopActivityViewController ()
 
 @end

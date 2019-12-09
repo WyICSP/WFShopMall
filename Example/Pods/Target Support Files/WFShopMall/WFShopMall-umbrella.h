@@ -11,6 +11,11 @@
 #endif
 
 #import "IncomeJsApiTest.h"
+#import "MMScanBottomView.h"
+#import "MMScanView.h"
+#import "MMScanViewChooseView.h"
+#import "MMScanViewController.h"
+#import "WFInputWriteOffView.h"
 #import "WFBindWithdrawViewController.h"
 #import "WFProductListViewController.h"
 #import "WFShopActivityViewController.h"

@@ -11,7 +11,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WFShopPublicAPI : NSObject
 
+/// 二维码数据
+@property (nonatomic, strong) NSDictionary *qrcodeInfo;
 
+/// 实例化
++ (instancetype)shareInstance;
 
 /**
  打开分享页面
@@ -19,6 +23,15 @@ NS_ASSUME_NONNULL_BEGIN
  @param params H5 带过来的参数
  */
 - (void)openShareViewCtrlWithParams:(NSDictionary *)params;
+
+
+/// 扫描二维码得到的数据
+/// @param params 扫描出来的信息
+- (NSDictionary *)scanQRCodeWithParams:(NSDictionary *)params;
+
+
+- (void)jumpScanCtrl:(void(^)(NSDictionary *codeInfo))resultBlock;
+
 @end
 
 NS_ASSUME_NONNULL_END

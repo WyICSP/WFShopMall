@@ -13,13 +13,15 @@
 #import "WKHelp.h"
 #import "WFWithdrawViewController.h"
 #import "WFShopPublicAPI.h"
+#import "WKTabbarController.h"
+
 @implementation IncomeJsApiTest
 
 /**跳转到提现页面*/
 - (void)gotoWithdrawController:(NSString *)msg :(JSCallback) completionHandler{
     
     WFWithdrawViewController *withDrawVC = [[WFWithdrawViewController alloc] initWithNibName:@"WFWithdrawViewController" bundle:[NSBundle bundleForClass:[self class]]];
-    
+    withDrawVC.hidesBottomBarWhenPushed = YES;
     [[[YFKeyWindow shareInstance] getCurrentVC].navigationController pushViewController:withDrawVC animated:YES];
     completionHandler(msg,YES);
     
@@ -68,4 +70,15 @@
 - (NSString *)getUserId:(NSString *)msg {
     return [UserData userInfo].uuid;
 }
+
+/**扫描二维码*/
+- (void)scanQRCode:(NSDictionary *)msg :(JSCallback) completionHandler
+{
+    [[WFShopPublicAPI shareInstance] jumpScanCtrl:^(NSDictionary * _Nonnull codeInfo) {
+        [[[YFKeyWindow shareInstance] getCurrentVC].navigationController popViewControllerAnimated:NO];
+        completionHandler(codeInfo,YES);
+    }];
+    
+}
+
 @end

@@ -73,7 +73,7 @@
 //    // 获得当前软件的版本号
 //    NSString *currentVersion                 = [NSString getAppVersion];
         //如果没有登录
-            UITabBarController *rootVC        = [YFMediatorManager rootTabBarCcontroller];
+            UITabBarController *rootVC        = [YFMediatorManager rootTabBarCcontroller];            
             [YFMediatorManager addChildVC:[WFShopMallViewController new] normalImageName:@"delete" selectedImageName:@"delete" title:@"商城"];
             [YFMediatorManager addChildVC:[WFViewController new] normalImageName:@"delete" selectedImageName:@"delete" title:@"我的片区"];
             [YFMediatorManager addChildVC:[WFLoginViewController shareInstance] normalImageName:@"delete" selectedImageName:@"delete" title:@"denglu"];
