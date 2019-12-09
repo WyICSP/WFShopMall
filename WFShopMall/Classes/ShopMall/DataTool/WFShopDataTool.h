@@ -91,7 +91,6 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  双十二活动 获取商城头部活动广告
  这个链接是url写死的 下次要用
- @param params 参数
  @param resultBlock 返回结果
  
  */
@@ -104,7 +103,6 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  双十二活动 获取优惠统计返利开关接口
  这个链接是url写死的 下次要用
- @param params 参数
  @param resultBlock 返回结果
  */
 + (void)getStatisticsDataResultBlock:(void(^)( WFShopRebateStatisticsModel *model))resultBlock

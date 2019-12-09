@@ -7,7 +7,7 @@
 //
 #import <UIKit/UIKit.h>
 #import "MMScanView.h"
-#import "YFBaseViewController.h"
+#import <WFKitMain/YFBaseViewController.h>
 
 typedef void(^_CallBack)(NSArray *result);
 
