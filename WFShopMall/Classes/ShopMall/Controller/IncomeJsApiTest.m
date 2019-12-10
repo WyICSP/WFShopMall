@@ -29,20 +29,26 @@
 
 
 /**返回*/
-- (void)goBack:(NSString *)msg :(JSCallback) completionHandler{
+- (void)goBack:(NSString *)msg :(JSCallback)completionHandler{
 
         // 如果用户提现成功 就返回到根视图
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"withdeawToRoot"]) {
-        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"withdeawToRoot"];
-        [[[YFKeyWindow shareInstance] getCurrentVC].navigationController popToRootViewControllerAnimated:YES];
-           completionHandler(msg,YES);
-        
-    }else{
+//    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"withdeawToRoot"]) {
+//        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"withdeawToRoot"];
+//        [[[YFKeyWindow shareInstance] getCurrentVC].navigationController popToRootViewControllerAnimated:YES];
+//           completionHandler(msg,YES);
+//
+//    }else{
         [[[YFKeyWindow shareInstance] getCurrentVC].navigationController popViewControllerAnimated:YES];
         completionHandler(msg,YES);
-    }
+//    }
 }
 
+/// 提现成功后返回并刷新页面
+- (void)goBackToRoot:(NSString *)msg :(JSCallback)completionHandler {
+    [YFNotificationCenter postNotificationName:@"reloadServiceKeys" object:nil];
+    [[[YFKeyWindow shareInstance] getCurrentVC].navigationController popToRootViewControllerAnimated:YES];
+    completionHandler(msg,YES);
+}
 
 /**分享*/
 - (void)openProfit:(NSDictionary *)msg :(JSCallback) completionHandler

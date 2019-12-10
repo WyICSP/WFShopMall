@@ -108,6 +108,7 @@
     [self.dwebview addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:NULL];
     //刷新
     [YFNotificationCenter addObserver:self selector:@selector(reloadUrl) name:@"reloadUserCnter" object:nil];
+    [YFNotificationCenter addObserver:self selector:@selector(reloadData) name:@"reloadServiceKeys" object:nil];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
@@ -125,6 +126,11 @@
 
 - (void)reloadUrl {
     self.isShowTab = YES;
+    [self.dwebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.urlString]]];
+}
+
+- (void)reloadData {
+    self.isShowTab = NO;
     [self.dwebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.urlString]]];
 }
 
@@ -195,6 +201,7 @@
 - (void)dealloc {
     [self.dwebview removeObserver:self forKeyPath:@"title"];
     [YFNotificationCenter removeObserver:self name:@"reloadUserCnter" object:nil];
+    [YFNotificationCenter removeObserver:self name:@"reloadServiceKeys" object:nil];
 }
 
 
