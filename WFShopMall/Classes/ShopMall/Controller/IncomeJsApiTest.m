@@ -84,7 +84,16 @@
         [[[YFKeyWindow shareInstance] getCurrentVC].navigationController popViewControllerAnimated:NO];
         completionHandler(codeInfo,YES);
     }];
-    
+}
+
+/**联系客服*/
+- (void)phoneCilck:(NSString *)msg :(JSCallback) completionHandler
+{
+    NSString *phoneNum = [NSString stringWithFormat:@"tel:%@",msg];
+    if (msg.length != 0) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNum]];
+    }
+    completionHandler(msg,YES);
 }
 
 @end
