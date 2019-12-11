@@ -38,7 +38,7 @@ PODS:
   - WFKitMain (0.2.5):
     - dsBridge
     - WFBasics
-  - WFShopMall (0.3.5):
+  - WFShopMall (0.3.6):
     - MJExtension
     - MJRefresh
     - SDWebImage
@@ -82,7 +82,7 @@ SPEC CHECKSUMS:
   WFHomeAddress: 4eb27df8a873af9161d147f8b10a1d50ba725467
   WFKitLogin: 9df6c2f02817159ca3371de7f04480f74f4f85a4
   WFKitMain: d79e7add7a2c0054ff1e68bab4ae072c9c6d0bdb
-  WFShopMall: 3ab92c5f62d42a91c289f0c021563e313c89b6db
+  WFShopMall: e466613bf351a6d9734a848af0dfd42aee92176d
   WKFunComponents: a4cde3e92b1c5841be91a9eefd7968c8ce903f73
   WYAutoLayout: 3cb136ddc2efa9faaecf15876e6a9b2a6fd7c6cb
 

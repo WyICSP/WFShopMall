@@ -114,7 +114,7 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
     if ([keyPath isEqualToString:@"title"]) {
         if (object == self.dwebview) {
-            [self.dwebview.title containsString:@"服务"] ? [self hideTabbar:NO] : [self hideTabbar:YES];
+            [self.dwebview.title isEqualToString:@"服务"] ? [self hideTabbar:NO] : [self hideTabbar:YES];
         }
     }
 }
