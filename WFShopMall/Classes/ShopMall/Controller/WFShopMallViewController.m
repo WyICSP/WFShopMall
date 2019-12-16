@@ -79,7 +79,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.progressColor = UIColorFromRGB(0xFF6430);
-    self.urlString = [NSString stringWithFormat:@"%@yzc-ebus-front/#/partner/service/index",H5_HOST];
+    self.urlString = [NSString stringWithFormat:@"%@yzc-ebus-front/#/partner/service/index",H5_SHOP_URL];
     
     //禁止长按弹出 UIMenuController 相关
     //禁止选择 css 配置相关
