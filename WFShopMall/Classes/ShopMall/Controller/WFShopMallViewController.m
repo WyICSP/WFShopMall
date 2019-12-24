@@ -71,6 +71,8 @@
 @property (nonatomic, assign) BOOL isCanUseSideBack;
 @property (nonatomic, assign) BOOL isTabbarHidden;
 @property (nonatomic, assign) BOOL isShowTab;
+/// 重新加载时候的 url
+@property (nonatomic, copy) NSString *reloadPath;
 @end
 
 @implementation WFShopMallViewController
@@ -80,6 +82,8 @@
     [super viewDidLoad];
     self.progressColor = UIColorFromRGB(0xFF6430);
     self.urlString = [NSString stringWithFormat:@"%@yzc-ebus-front/#/partner/service/index",H5_SHOP_URL];
+    DLog(@"%@",self.urlString);
+    self.reloadPath = [NSString stringWithFormat:@"%@yzc-ebus-front/#/partner/service/index",H5_SHOP_URL];
     
     //禁止长按弹出 UIMenuController 相关
     //禁止选择 css 配置相关
@@ -126,7 +130,9 @@
 
 - (void)reloadUrl {
     self.isShowTab = YES;
+    [super setUrlString:self.reloadPath];
     [self.dwebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.urlString]]];
+    [self.dwebview reload];
 }
 
 - (void)reloadData {
