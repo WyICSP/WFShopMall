@@ -185,7 +185,7 @@
 //            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"withdeawToRoot"];
             self.moneyTextField.text = @"";
             WFShopMallIncomeViewController *incomeVC = [[WFShopMallIncomeViewController alloc]init];
-            incomeVC.urlString = [NSString stringWithFormat:@"%@yzc-ebus-front/#/partner/service/cashDetail?id=%@",H5_HOST,detailID[@"detailId"]];
+            incomeVC.urlString = [NSString stringWithFormat:@"%@yzc-app-partner/#/service/cashDetail?id=%@",H5_SHOP_URL,detailID[@"detailId"]];
             [self.navigationController pushViewController:incomeVC animated:YES];
             
             

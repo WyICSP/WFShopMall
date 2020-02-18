@@ -81,9 +81,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.progressColor = UIColorFromRGB(0xFF6430);
-    self.urlString = [NSString stringWithFormat:@"%@yzc-ebus-front/#/partner/service/index",H5_SHOP_URL];
+    self.urlString = [NSString stringWithFormat:@"%@yzc-app-partner/#/service/index",H5_SHOP_URL];
     DLog(@"%@",self.urlString);
-    self.reloadPath = [NSString stringWithFormat:@"%@yzc-ebus-front/#/partner/service/index",H5_SHOP_URL];
+    self.reloadPath = [NSString stringWithFormat:@"%@yzc-app-partner/#/service/index",H5_SHOP_URL];
     
     //禁止长按弹出 UIMenuController 相关
     //禁止选择 css 配置相关
@@ -368,7 +368,7 @@
 //        // 收益
 //        WFShopMallIncomeViewController *incomeVC = [[WFShopMallIncomeViewController alloc] init];
 //        incomeVC.hidesBottomBarWhenPushed = YES;
-//        incomeVC.urlString =[NSString stringWithFormat:@"%@yzc-ebus-front/#/partner/profit/index?",H5_HOST] ;
+//        incomeVC.urlString =[NSString stringWithFormat:@"%@yzc-app-partner/#//profit/index?",H5_HOST] ;
 //        [self.navigationController pushViewController:incomeVC animated:NO];
 //    }
 //}
