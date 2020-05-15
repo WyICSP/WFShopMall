@@ -8,6 +8,7 @@
 
 #import "WFLoginPublicAPI.h"
 #import "YFMediatorManager+WFLogin.h"
+#import "WFSecuritySetViewController.h"
 #import "WFHomeDataTool.h"
 #import "WFPayTypeMsgModel.h"
 #import "SKSafeObject.h"
@@ -80,6 +81,32 @@
     login.hidesBottomBarWhenPushed = YES;
     login.loginType = WFJumpLoginCtrlH5Tpye;
     [[[YFKeyWindow shareInstance] getCurrentVC].navigationController pushViewController:login animated:YES];
+}
+
+
+/// 修改密码
++ (void)changePassword {
+    WFSecuritySetViewController *security = [[WFSecuritySetViewController alloc] initWithNibName:@"WFSecuritySetViewController" bundle:[NSBundle bundleForClass:[self class]]];
+    security.setType = WFSecuritySetForgetPswType;
+    [[[YFKeyWindow shareInstance] getCurrentVC].navigationController pushViewController:security animated:YES];
+}
+
+/// 打开授信充值页面
++ (void)openCreditPayCtrl {
+    UIViewController *controller = [[YFKeyWindow shareInstance] getCurrentVC];
+    if (controller) {
+        [YFMediatorManager openCreditPayCtrlWithController:controller type:0];
+    }
+}
+
+/// 打开奖励收入
++ (void)openRewardCtrl {
+    UIViewController *controller = [[YFKeyWindow shareInstance] getCurrentVC];
+    if (controller) {
+        [YFMediatorManager openActivityOrRewardCtrlWithController:controller type:0];
+    }
+    
+
 }
 
 @end

@@ -12,6 +12,12 @@ NS_ASSUME_NONNULL_BEGIN
 @interface WFHomeDataModel : NSObject
 /**收入*/
 @property (nonatomic, strong) NSNumber *income;
+/// 活动收入
+@property (nonatomic, strong) NSNumber *activityMoney;
+/// 奖励收入
+@property (nonatomic, strong) NSNumber *awardsMoney;
+/// 说明
+@property (nonatomic, copy) NSString *advertisement;
 /**使用率*/
 @property (nonatomic, assign) CGFloat usage;
 /**已发货充电桩台数*/

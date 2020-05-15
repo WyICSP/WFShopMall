@@ -8,6 +8,7 @@
 #import "JsApiTest.h"
 #import "SKSafeObject.h"
 #import "WFLoginPublicAPI.h"
+#import "YFMediatorManager+WFLogin.h"
 #import "dsbridge.h"
 #import "YFKeyWindow.h"
 #import "UserData.h"
@@ -32,6 +33,11 @@
 - (NSString *) isIphoneX: (NSString *) msg
 {
     return ISIPHONEX ? @"1" : @"0";
+}
+
+- (NSString *)getAppVersion:(NSString *)msg
+{
+    return APP_VERSION;
 }
 
 
@@ -79,6 +85,31 @@
 //    [WFLoginPublicAPI loginOutAndJumpLogin];
 //    completionHandler(msg,YES);
 //}
+
+/**打开授信*/
+- (void)openCreditPay:(NSString *)msg :(JSCallback) completionHandler
+{
+    [WFLoginPublicAPI openCreditPayCtrl];
+    completionHandler(msg,YES);
+}
+
+/**打开奖励收入*/
+- (void)toAwardsMoney:(NSString *)msg :(JSCallback) completionHandler
+{
+    [WFLoginPublicAPI openRewardCtrl];
+    completionHandler(msg,YES);
+}
+
+/**下载图片*/
+- (void)saveImg:(NSString *)msg :(JSCallback) completionHandler
+{
+    if (msg.length != 0) {
+        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:msg]]];
+        if (image != nil)
+        [YFMediatorManager savePhotoWithParams:@[image]];
+    }
+    completionHandler(msg,YES);
+}
 
 
 @end

@@ -9,6 +9,8 @@
 #import "WFHomeViewController.h"
 #import "WFHomeFirstItemCollectionViewCell.h"
 #import "WFHomeSectionItemCollectionViewCell.h"
+#import "WFHomeExplainCollectionViewCell.h"
+#import "WFHomeNullCollectionViewCell.h"
 #import "WFHomeWebViewController.h"
 #import "WFHomeIncomeWebViewController.h"
 #import "YFMediatorManager+WFLogin.h"
@@ -33,13 +35,11 @@
 #pragma mark 生命周期
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
     //注册通知：重新刷新页面
     [YFNotificationCenter addObserver:self selector:@selector(getHomeData) name:@"reloadUserCnter" object:nil];
     
     id info = [YFUserDefaults objectForKey:@"HomeData"];
-    
+
     if (info) {
         WFHomeDataModel *models = [WFHomeDataModel mj_objectWithKeyValues:info];
         [self requestSuccessWithModels:models];
@@ -68,9 +68,23 @@
     [self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 
-- (void)viewWillDisappear:(BOOL)animated{
+- (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+    //清空缓存
+//    [self deleteWebCache];
+    // 开启
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    // 禁用返回手势
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    }
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -92,7 +106,6 @@
 
 - (void)requestSuccessWithModels:(WFHomeDataModel * _Nonnull)models {
     self.models = models;
-    
     //结束刷新
     [self.collectionView.mj_header endRefreshing];
     
@@ -101,20 +114,31 @@
 
 #pragma mark UICollectionViewDelegate,UICollectionViewDataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return section == 0 ? 1 : self.models.list.count;
+    return section == 2 ? self.models.list.count : 1;
+//    return section == 0 ? 1 : self.models.list.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         WFHomeFirstItemCollectionViewCell *cell = [WFHomeFirstItemCollectionViewCell cellWithCollectionView:collectionView indexPath:indexPath];
         WS(weakSelf)
-        cell.clickLookDetailBlock = ^{
-            [weakSelf handleHeadBtnMethod];
+        cell.clickLookDetailBlock = ^(NSInteger index) {
+            [weakSelf handleHeadBtnMethodWithIndex:index];
         };
+        cell.model = self.models;
+        return cell;
+    }else if (indexPath.section == 1) {
+        // 授信描述文字
+        if (self.models.advertisement.length == 0) {
+            // 当没有授信描述的时候
+            WFHomeNullCollectionViewCell *cell = [WFHomeNullCollectionViewCell cellWithCollectionView:collectionView indexPath:indexPath];
+            return cell;
+        }
+        WFHomeExplainCollectionViewCell *cell = [WFHomeExplainCollectionViewCell cellWithCollectionView:collectionView indexPath:indexPath];
         cell.model = self.models;
         return cell;
     }
@@ -124,23 +148,28 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return indexPath.section == 0 ? CGSizeMake(ScreenWidth, KHeight(335.0f)) : CGSizeMake((ScreenWidth-KWidth(22))/2, KHeight(95.0f));
+    if (indexPath.section == 0) {
+        return CGSizeMake(ScreenWidth, KHeight(335.0f));
+    }else if (indexPath.section == 1) {
+        return CGSizeMake(ScreenWidth, self.models.advertisement.length == 0 ? 2.0f : KHeight(55.0f));
+    }
+    return CGSizeMake((ScreenWidth-KWidth(22))/2, KHeight(95.0f));
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return section == 0 ? UIEdgeInsetsZero : UIEdgeInsetsMake(0, KWidth(10.0f), 0, KWidth(10.0f));
+    return section == 2 ? UIEdgeInsetsMake(0, KWidth(10.0f), 0, KWidth(10.0f)) : UIEdgeInsetsZero;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-    return section == 1? KWidth(2.0f) : CGFLOAT_MIN;
+    return section == 2 ? KWidth(2.0f) : CGFLOAT_MIN;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return section == 1 ? KWidth(7.0f) : CGFLOAT_MIN;
+    return section == 2 ? KWidth(7.0f) : CGFLOAT_MIN;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 1) {
+    if (indexPath.section == 2) {
         WFHomeDataListModel *itemModel = self.models.list[indexPath.row];
         if (itemModel.typeId == 1) {
             //我的充电桩
@@ -148,6 +177,12 @@
         }else if (itemModel.typeId == 4) {
             //我的片区
             [YFMediatorManager openApplyAreaCtrlWithController:self];
+        }else if (itemModel.typeId == 8) {
+            // 授信充值
+            [YFMediatorManager openCreditPayCtrlWithController:self type:1];
+        }else if (itemModel.typeId == 9) {
+            // 奖励中心
+            [YFMediatorManager openRewardCtrlWithController:self];
         }else if (itemModel.typeId == 7) {
             //资料包
             WFOtherViewController *other = [[WFOtherViewController alloc] initWithNibName:@"WFOtherViewController" bundle:[NSBundle bundleForClass:[self class]]];
@@ -158,20 +193,30 @@
             //其他
             WFHomeWebViewController *web = [[WFHomeWebViewController alloc] init];
             web.hidesBottomBarWhenPushed = YES;
-            web.urlString = [NSString stringWithFormat:@"%@uuid=%@&appVersion=v%@",itemModel.goUrl,USER_UUID,APP_VERSION];
+            web.urlString = itemModel.goUrl;
             [self.navigationController pushViewController:web animated:YES];
         }
     }
 }
 
 /**
- 查看详情 我的收入
+ 查看详情 我的收入 10 钱包 20 奖励 30活动
  */
-- (void)handleHeadBtnMethod {
-    WFHomeIncomeWebViewController *web = [[WFHomeIncomeWebViewController alloc] init];
-    web.hidesBottomBarWhenPushed = YES;
-    web.urlString = [NSString stringWithFormat:@"%@yzc_business_myIncome/#/myIncome?uuid=%@&appVersion=v%@",H5_HOST,USER_UUID,APP_VERSION];
-    [self.navigationController pushViewController:web animated:YES];
+- (void)handleHeadBtnMethodWithIndex:(NSInteger)index {
+    if (index == 10) {
+        //钱包
+        WFHomeIncomeWebViewController *web = [[WFHomeIncomeWebViewController alloc] init];
+        web.hidesBottomBarWhenPushed = YES;
+        web.urlString = [NSString stringWithFormat:@"%@yzc-app-partner/#/myIncome/index?uuid=%@&appVersion=v%@",H5_HOST,USER_UUID,APP_VERSION];
+        [self.navigationController pushViewController:web animated:YES];
+    }else if (index == 20) {
+        //奖励
+        [YFMediatorManager openActivityOrRewardCtrlWithController:self type:0];
+    }else if (index == 30) {
+        // 活动
+        [YFMediatorManager openActivityOrRewardCtrlWithController:self type:1];
+    }
+    
 }
 
 #pragma mark get set
@@ -187,6 +232,8 @@
         _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         [_collectionView registerNib:[UINib nibWithNibName:@"WFHomeFirstItemCollectionViewCell" bundle:[NSBundle bundleForClass:[self class]]] forCellWithReuseIdentifier:@"WFHomeFirstItemCollectionViewCell"];
         [_collectionView registerNib:[UINib nibWithNibName:@"WFHomeSectionItemCollectionViewCell" bundle:[NSBundle bundleForClass:[self class]]] forCellWithReuseIdentifier:@"WFHomeSectionItemCollectionViewCell"];
+        [_collectionView registerNib:[UINib nibWithNibName:@"WFHomeExplainCollectionViewCell" bundle:[NSBundle bundleForClass:[self class]]] forCellWithReuseIdentifier:@"WFHomeExplainCollectionViewCell"];
+        [_collectionView registerNib:[UINib nibWithNibName:@"WFHomeNullCollectionViewCell" bundle:[NSBundle bundleForClass:[self class]]] forCellWithReuseIdentifier:@"WFHomeNullCollectionViewCell"];
         @weakify(self)
         MJRefreshStateHeader *header = [MJRefreshStateHeader headerWithRefreshingBlock:^{
             @strongify(self)

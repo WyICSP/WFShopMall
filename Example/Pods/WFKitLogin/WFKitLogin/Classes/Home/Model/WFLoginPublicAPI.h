@@ -34,11 +34,22 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (void)loginOutAndJumpLogin;
 
+/// 修改密码
++ (void)changePassword;
+
 /**
  打电话
  @param phone 电话号码
  */
 + (void)callPhoneWithNumber:(NSString *)phone;
+
+/// 打开授信充值页面
++ (void)openCreditPayCtrl;
+
+
+
+/// 打开奖励收入页面
++ (void)openRewardCtrl;
 
 @end
 

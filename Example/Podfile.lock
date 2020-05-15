@@ -1,33 +1,36 @@
 PODS:
-  - AFNetworking (3.2.1):
-    - AFNetworking/NSURLSession (= 3.2.1)
-    - AFNetworking/Reachability (= 3.2.1)
-    - AFNetworking/Security (= 3.2.1)
-    - AFNetworking/Serialization (= 3.2.1)
-    - AFNetworking/UIKit (= 3.2.1)
-  - AFNetworking/NSURLSession (3.2.1):
+  - AFNetworking (4.0.1):
+    - AFNetworking/NSURLSession (= 4.0.1)
+    - AFNetworking/Reachability (= 4.0.1)
+    - AFNetworking/Security (= 4.0.1)
+    - AFNetworking/Serialization (= 4.0.1)
+    - AFNetworking/UIKit (= 4.0.1)
+  - AFNetworking/NSURLSession (4.0.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.2.1)
-  - AFNetworking/Security (3.2.1)
-  - AFNetworking/Serialization (3.2.1)
-  - AFNetworking/UIKit (3.2.1):
+  - AFNetworking/Reachability (4.0.1)
+  - AFNetworking/Security (4.0.1)
+  - AFNetworking/Serialization (4.0.1)
+  - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
   - dsBridge (3.0.6)
+  - FMDB (2.7.5):
+    - FMDB/standard (= 2.7.5)
+  - FMDB/standard (2.7.5)
   - MJExtension (3.2.1)
-  - MJRefresh (3.2.2)
-  - SDWebImage (5.3.1):
-    - SDWebImage/Core (= 5.3.1)
-  - SDWebImage/Core (5.3.1)
+  - MJRefresh (3.4.1)
+  - SDWebImage (5.7.4):
+    - SDWebImage/Core (= 5.7.4)
+  - SDWebImage/Core (5.7.4)
   - SVProgressHUD (2.2.5)
-  - WFBasics (0.3.1):
+  - WFBasics (0.3.7):
     - AFNetworking
     - SVProgressHUD
     - WYAutoLayout
   - WFHomeAddress (0.1.5):
     - MJExtension
-  - WFKitLogin (0.3.9):
+  - WFKitLogin (0.7.0):
     - dsBridge
     - MJExtension
     - MJRefresh
@@ -35,18 +38,24 @@ PODS:
     - WFHomeAddress
     - WFKitMain
     - WKFunComponents
-  - WFKitMain (0.2.5):
+  - WFKitMain (0.2.9):
     - dsBridge
     - WFBasics
-  - WFShopMall (0.3.9):
+  - WFShopMall (0.4.0):
     - MJExtension
     - MJRefresh
     - SDWebImage
     - WFBasics
     - WFKitLogin
     - WFKitMain
-  - WKFunComponents (0.1.0)
-  - WYAutoLayout (1.0.1)
+    - WFStatistics
+  - WFStatistics (0.1.0):
+    - FMDB
+    - WFBasics
+    - WFKitLogin
+    - WFKitMain
+  - WKFunComponents (0.1.1)
+  - WYAutoLayout (1.1.0)
 
 DEPENDENCIES:
   - WFShopMall (from `../`)
@@ -55,6 +64,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
     - dsBridge
+    - FMDB
     - MJExtension
     - MJRefresh
     - SDWebImage
@@ -65,6 +75,7 @@ SPEC REPOS:
     - WFHomeAddress
     - WFKitLogin
     - WFKitMain
+    - WFStatistics
     - WKFunComponents
 
 EXTERNAL SOURCES:
@@ -72,19 +83,21 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   dsBridge: 48b62ee8a411ad601a88d6f6c8cf6cb634b206b7
+  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   MJExtension: 635f2c663dcb1bf76fa4b715b2570a5710aec545
-  MJRefresh: 72a46ecaa2a0feaf48fc5198dff95f25f8bb27c6
-  SDWebImage: 7137d57385fb632129838c1e6ab9528a22c666cc
+  MJRefresh: 3153c59a363159092c08b2177ec3a7d09f90bfaf
+  SDWebImage: 48b88379b798fd1e4298f95bb25d2cdabbf4deb3
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  WFBasics: 355b5fb2c588621db73e371dd2c7deea696fbf51
+  WFBasics: 590f1608ff327f298915addd8f6ff3f0895e636e
   WFHomeAddress: 4eb27df8a873af9161d147f8b10a1d50ba725467
-  WFKitLogin: 9df6c2f02817159ca3371de7f04480f74f4f85a4
-  WFKitMain: d79e7add7a2c0054ff1e68bab4ae072c9c6d0bdb
-  WFShopMall: 0cbb1c9560a4f1ba63383e3bdf325fab21a365fe
-  WKFunComponents: a4cde3e92b1c5841be91a9eefd7968c8ce903f73
-  WYAutoLayout: 3cb136ddc2efa9faaecf15876e6a9b2a6fd7c6cb
+  WFKitLogin: 6344fa86d19c8075829971898f4696f95221ecaa
+  WFKitMain: 0e163d1f90cb99b4007d486f892f165773194800
+  WFShopMall: 700b8435f5c4216344618f1356c80907ec4e8d2a
+  WFStatistics: eebb64399964d975246a40da6d2de271c714f9c1
+  WKFunComponents: 359e5059c096338eee60fee1d7146b701ed30372
+  WYAutoLayout: 7bc596f94be915e1f690f316ac859287c8ec9d51
 
 PODFILE CHECKSUM: edeb229b4aba07d8135d92ef2358a23aa4199bdb
 

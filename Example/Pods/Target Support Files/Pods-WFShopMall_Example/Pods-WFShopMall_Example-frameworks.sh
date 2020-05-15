@@ -162,6 +162,7 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
@@ -171,12 +172,14 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/WFKitLogin/WFKitLogin.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/WFKitMain/WFKitMain.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/WFShopMall/WFShopMall.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/WFStatistics/WFStatistics.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/WKFunComponents/WKFunComponents.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/WYAutoLayout/WYAutoLayout.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/dsBridge/dsBridge.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
@@ -186,6 +189,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/WFKitLogin/WFKitLogin.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/WFKitMain/WFKitMain.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/WFShopMall/WFShopMall.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/WFStatistics/WFStatistics.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/WKFunComponents/WKFunComponents.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/WYAutoLayout/WYAutoLayout.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/dsBridge/dsBridge.framework"

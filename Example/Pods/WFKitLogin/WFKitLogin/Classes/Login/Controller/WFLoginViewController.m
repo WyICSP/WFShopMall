@@ -10,6 +10,7 @@
 #import "WFLoginViewController.h"
 #import "WFApplyPartnerViewController.h"
 #import "YFMediatorManager+YFKitMain.h"
+#import "WFSecuritySetViewController.h"
 #import "WFHomeSaveDataTool.h"
 #import "NSString+Regular.h"
 #import "WFLoginDataTool.h"
@@ -83,6 +84,10 @@
     }
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
 #pragma mark 接口
 + (instancetype)shareInstance {
     static WFLoginViewController *login;
@@ -110,7 +115,7 @@
     //设置手机号
     self.phoneTF.text = [NSString isBlankString:USERPHONE] ? @"" : USERPHONE;
     //添加返回按钮
-    [self addLeftImageBtn:@"Back"];
+//    [self addLeftImageBtn:@"Back"];
     //倒计时初始值
     self.countIndex = 60;
     //获取地址信息
@@ -118,9 +123,9 @@
     
 }
 
-- (void)leftImageButtonClick:(UIButton *)sender {
-    [super goBack];
-}
+//- (void)leftImageButtonClick:(UIButton *)sender {
+//    [super goBack];
+//}
 
 #pragma mark 登录操作
 - (IBAction)clickLoginBtn:(id)sender {
@@ -150,35 +155,39 @@
 }
 
 - (void)loginSuccessWithmDictionary:(NSDictionary *)mDictionary {
-    //存储用户信息
-    [UserData userInfo:mDictionary];
-    //存储用户账号信息
-    [YFUserDefaults setObject:self.phoneTF.text forKey:@"USERPHONE"];
-    [YFUserDefaults synchronize];
-    
-    if (self.loginType == WFJumpLoginCtrlH5Tpye) {
-        [self.tabBarController setSelectedIndex:0];
-        [self.navigationController popToRootViewControllerAnimated:YES];
-        //刷新个人中心
-        [YFNotificationCenter postNotificationName:@"reloadUserCnter" object:nil];
-        
+    if (!self.exChangeBtn.selected && [self.phoneTF.text isEqualToString:self.passwordTF.text]) {
+        //密码登录的时候 手机号和密码相同 需要重新设置密码
+        WFSecuritySetViewController *security = [[WFSecuritySetViewController alloc] initWithNibName:@"WFSecuritySetViewController" bundle:[NSBundle bundleForClass:[self class]]];
+        WFSecuritySetType sType = self.loginType == WFJumpLoginCtrlH5Tpye ? WFSecuritySetComType : WFSecuritySetUpgradeType;
+        security.secutityType(sType).userMoblie(self.phoneTF.text).userLoginInfo(mDictionary);
+        [self.navigationController pushViewController:security animated:YES];
     }else {
-        //作为跟视图的时候
-        UITabBarController *rootVC = [YFMediatorManager rootTabBarCcontroller];
-        [self addChildViewControllers];
-        [UIApplication sharedApplication].keyWindow.rootViewController = rootVC;
-        
-        CATransition *anim = [CATransition animation];
-        ////转场动画持续时间
-        anim.duration = 0.5;
-        anim.type = @"cube";
-        //转场动画将去的方向
-        anim.subtype = kCATransitionFromRight;
-        [[UIApplication sharedApplication].keyWindow.layer addAnimation:anim forKey:nil];
+        //存储用户信息
+        [UserData userInfo:mDictionary];
+        //存储用户账号信息
+        [YFUserDefaults setObject:self.phoneTF.text forKey:@"USERPHONE"];
+        [YFUserDefaults synchronize];
+                
+        if (self.loginType == WFJumpLoginCtrlH5Tpye) {
+            [self.tabBarController setSelectedIndex:0];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            //刷新个人中心
+            [YFNotificationCenter postNotificationName:@"reloadUserCnter" object:nil];
+        }else {
+            //作为跟视图的时候
+            UITabBarController *rootVC = [YFMediatorManager rootTabBarCcontroller];
+            [self addChildViewControllers];
+            [UIApplication sharedApplication].keyWindow.rootViewController = rootVC;
+            
+            CATransition *anim = [CATransition animation];
+            ////转场动画持续时间
+            anim.duration = 0.5;
+            anim.type = @"cube";
+            //转场动画将去的方向
+            anim.subtype = kCATransitionFromRight;
+            [[UIApplication sharedApplication].keyWindow.layer addAnimation:anim forKey:nil];
+        }
     }
-    
-    
-    
 }
 
 /**
@@ -259,6 +268,13 @@
     [self.navigationController pushViewController:apply animated:YES];
 }
 
+/// 忘记密码
+/// @param sender 按钮对象
+- (IBAction)clickForgetPswBtn:(id)sender {
+    WFSecuritySetViewController *security = [[WFSecuritySetViewController alloc] initWithNibName:@"WFSecuritySetViewController" bundle:[NSBundle bundleForClass:[self class]]];
+    security.setType = WFSecuritySetForgetPswType;
+    [self.navigationController pushViewController:security animated:YES];
+}
 
 /**
  监听输入框
@@ -299,10 +315,10 @@
     [YFMediatorManager setGlobalBackGroundColor:UIColor.whiteColor];
     [YFMediatorManager setTabbarTitleColor:NavColor titleFont:11];
     
-    NSArray *ClassArray = [NSArray arrayWithObjects:@"WFHomeViewController",@"WFShopMallViewController",@"WFBusSchoolViewController",@"WFUserCenterViewController", nil];
-    NSArray *titleArray = [NSArray arrayWithObjects:@"首页",@"商城",@"商学院",@"我的", nil];
-    NSArray *normalImgArray = [NSArray arrayWithObjects:@"homeNoSelect",@"shopNoSelect",@"schoolNoSelect",@"mineNoSelect", nil];
-    NSArray *selectImgArray = [NSArray arrayWithObjects:@"homeSelect",@"shopSelect",@"schoolSelect",@"mineSelect", nil];
+    NSArray *ClassArray = [NSArray arrayWithObjects:@"WFNewHomeViewController",@"WFBusSchoolViewController",@"WFPersonCenterViewController", nil];
+    NSArray *titleArray = [NSArray arrayWithObjects:@"首页",@"商学院",@"我的", nil];
+    NSArray *normalImgArray = [NSArray arrayWithObjects:@"homeNoSelect",@"schoolNoSelect",@"mineNoSelect", nil];
+    NSArray *selectImgArray = [NSArray arrayWithObjects:@"homeSelect",@"schoolSelect",@"mineSelect", nil];
     for (int i = 0; i < ClassArray.count; i++) {
         NSString *className = ClassArray[i];
         Class class = NSClassFromString(className);

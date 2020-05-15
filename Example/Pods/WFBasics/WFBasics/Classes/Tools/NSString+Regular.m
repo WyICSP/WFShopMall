@@ -810,6 +810,31 @@
     return app_Name;
 }
 
+/// 向上 四舍五入
+/// @param price 数字
+/// @param position 保留的小数位数
++ (NSString *)rounding:(double)price afterPoint:(int)position {
+    //向上四舍五入
+    NSDecimalNumberHandler* roundingBehavior = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundPlain scale:position raiseOnExactness:NO raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:NO];
+    NSDecimalNumber *ouncesDecimal;
+    NSDecimalNumber *roundedOunces;
+    ouncesDecimal = [[NSDecimalNumber alloc] initWithFloat:price];
+    roundedOunces = [ouncesDecimal decimalNumberByRoundingAccordingToBehavior:roundingBehavior];
+    return [NSString stringWithFormat:@"%@",roundedOunces];
+}
+
+
++ (NSString *)decimalNumberWithDouble:(double)conversionValue {
+    NSString *doubleString = [NSString stringWithFormat:@"%lf", conversionValue];
+    NSDecimalNumber *decNumber = [NSDecimalNumber decimalNumberWithString:doubleString];
+    return [decNumber stringValue];
+}
+
++ (double)decimalPriceWithDouble:(double)conversionValue {
+    NSString *doubleString = [NSString stringWithFormat:@"%lf", conversionValue];
+    NSDecimalNumber *decNumber = [NSDecimalNumber decimalNumberWithString:doubleString];
+    return [decNumber doubleValue];
+}
 
 
 @end
